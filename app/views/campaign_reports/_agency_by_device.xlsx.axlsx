@@ -1,0 +1,155 @@
+wb.add_worksheet(name: t('views.campaign_reports.workbook.by_device.title')) do |sheet|
+
+  sheet.column_widths nil, nil, nil, nil, 10
+  if ads_group_hidden == false
+
+      r = [
+          campaign.name, '', '', '', '', '', '', '', '',
+                        t('views.campaign_reports.workbook.fields.start_date'),
+                        t('views.campaign_reports.workbook.fields.end_date'),
+                        campaign.campaign_type,
+                        t('views.campaign_reports.workbook.fields.media_budget'), ''
+      ]
+      sheet.add_row r, style: [
+                         @title, @title, @title, @title, @title, @title, @title, @title, nil, @title, @title, @title, @title
+                     ]
+      sheet.merge_cells 'A1:H1' # Campaign Title
+
+      r = [
+          t('views.campaign_details.fields.dates'),
+          t('views.campaign_details.fields.ad_group'),
+          t('views.campaign_details.fields.views'),
+          t('views.campaign_details.fields.clicks'),
+          t('views.campaign_details.fields.ctr'),
+          t('views.campaign_details.fields.number_of_device_ids'),
+          t('views.campaign_details.fields.device_ids_vs_views'),
+          t('views.campaign_details.fields.frequency_cap'),
+          '',
+          campaign.active_at.strftime(Date::DATE_FORMATS[:iso]),
+          campaign.expire_at.strftime(Date::DATE_FORMATS[:iso]),
+          get_unit_price(campaign, :global).format,
+          get_budget(campaign, :global).format
+      ]
+      s = [ @head, @head, @head, @head, @head, @head, @head, @head, nil, @title_border, @title_border, @title_border, @title_border]
+      sheet.add_row r, style: s
+
+      cell = Reports::Helpers::AdminFormula.new 3, views: 'C', clicks: 'D', number_of_device_ids: 'F'
+
+      cell.chart_from = cell.row
+
+      data.each do |d|
+        sheet.add_row [
+                          d.date_range,
+                          d.group_ads_name,
+                          d.views,
+                          d.clicks,
+                          cell.ctr,
+                          d.number_of_device_ids,
+                          ((d.number_of_device_ids.to_f/d.views.to_f)),
+                          d.frequency_cap
+                      ], style: [ nil, nil, @number, @number, @percent, @number, @percent, @number]
+
+        cell.current_row_to_sum_list
+        cell.next
+      end
+
+      cell.chart_to = cell.row
+
+      total_number_of_device_ids = cell.sum_for_grand(:number_of_device_ids)
+      total_views = cell.sum_for_grand(:views)
+
+      sheet.add_row [
+                        t('views.campaign_details.fields.grand_total'),
+                        '',
+                        cell.sum_for_grand(:views),
+                        cell.sum_for_grand(:clicks),
+                        cell.ctr,
+                        cell.sum_for_grand(:number_of_device_ids),
+                        cell.compute_percentage(:number_of_device_ids, :views, cell.row),
+                        ''
+                    ], style: [ @head, @head, @head_number, @head_number, @head_percent, @head_number, @head_percent, @head]
+  else
+      r = [
+          campaign.name, '', '', '', '', '', '', '',
+                        t('views.campaign_reports.workbook.fields.start_date'),
+                        t('views.campaign_reports.workbook.fields.end_date'),
+                        campaign.campaign_type,
+                        t('views.campaign_reports.workbook.fields.media_budget'), ''
+      ]
+      sheet.add_row r, style: [
+                         @title, @title, @title, @title, @title, @title, @title, nil, @title, @title, @title, @title
+                     ]
+      sheet.merge_cells 'A1:G1' # Campaign Title
+
+      r = [
+          t('views.campaign_details.fields.dates'),
+          t('views.campaign_details.fields.views'),
+          t('views.campaign_details.fields.clicks'),
+          t('views.campaign_details.fields.ctr'),
+          t('views.campaign_details.fields.number_of_device_ids'),
+          t('views.campaign_details.fields.device_ids_vs_views'),
+          t('views.campaign_details.fields.frequency_cap'),
+          '',
+          campaign.active_at.strftime(Date::DATE_FORMATS[:iso]),
+          campaign.expire_at.strftime(Date::DATE_FORMATS[:iso]),
+          get_unit_price(campaign, :global).format,
+          get_budget(campaign, :global).format
+      ]
+      s = [ @head, @head, @head, @head, @head, @head, @head, nil, @title_border, @title_border, @title_border, @title_border]
+      sheet.add_row r, style: s
+
+      cell = Reports::Helpers::AdminFormula.new 3, views: 'B', clicks: 'C', number_of_device_ids: 'E'
+
+      cell.chart_from = cell.row
+
+      data.each do |d|
+        sheet.add_row [
+                          d.date_range,
+                          d.views,
+                          d.clicks,
+                          cell.ctr,
+                          d.number_of_device_ids,
+                          ((d.number_of_device_ids.to_f/d.views.to_f)),
+                          d.frequency_cap
+                      ], style: [ nil, @number, @number, @percent, @number, @percent, @number]
+
+        cell.current_row_to_sum_list
+        cell.next
+      end
+
+      cell.chart_to = cell.row
+
+      total_number_of_device_ids = cell.sum_for_grand(:number_of_device_ids)
+      total_views = cell.sum_for_grand(:views)
+
+      sheet.add_row [
+                        t('views.campaign_details.fields.grand_total'),
+                        cell.sum_for_grand(:views),
+                        cell.sum_for_grand(:clicks),
+                        cell.ctr,
+                        cell.sum_for_grand(:number_of_device_ids),
+                        cell.compute_percentage(:number_of_device_ids, :views, cell.row),
+                        ''
+                    ], style: [ @head, @head_number, @head_number, @head_percent, @head_number, @head_percent, @head]
+  end
+
+  # Add hidden rows for create chart
+  cell.next
+
+  # Create chart
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Views', :start_at => "A#{cell.row}", :end_at => "H#{cell.row + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["C#{cell.chart_from}:C#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Clicks', :start_at => "H#{cell.row}", :end_at => "M#{cell.row + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["D#{cell.chart_from}:D#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+end

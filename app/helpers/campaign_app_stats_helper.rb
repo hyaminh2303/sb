@@ -1,0 +1,2 @@
+module CampaignAppStatsHelper
+end

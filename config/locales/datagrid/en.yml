@@ -1,0 +1,38 @@
+en:
+  datagrid:
+    header:
+      default: ""
+      tools:
+        collapse_expand: "Collapse/Expand"
+        remove: "Close"
+    form:
+      search: "Search"
+      reset: "Reset"
+      Apply: "Apply"
+      Cancel: "Cancel"
+    table:
+      header:
+        actions: "Actions"
+      actions:
+        show: "View Details"
+        edit: "Edit"
+        delete: "Delete"
+        create: "Create"
+        add: "Add new"
+        remove_all: 'Remove All'
+        duplicate: "Duplicate"
+        stat: "View statss"
+        ads_group: "Ads Group"
+        location_update: "Location Update"
+        location_import: "Location Import"
+        daily_update: "Daily Update"
+        executive_report: "Executive Report"
+        daily_import: "Daily Import"
+        other_reports_import: "Other Reports Import"
+        delete_daily: "Delete Daily Tracking"
+        monthly_campaign_summary: "Monthly Campaign"
+  views:
+    statss:
+      tooltip:
+        budget_spent: "Budget Spent"
+        budget: "Total Budget"

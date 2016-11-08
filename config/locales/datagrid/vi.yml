@@ -1,0 +1,5 @@
+vi:
+  datagrid:
+    form:
+      search: "Tìm"
+      reset: "Nhập lại"

@@ -1,0 +1,62 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vi:
+  app_name: "IMDE"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+    form:
+      cancel: "Cancel"
+      add: "Add"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"
+  validators:
+    email:
+      invalid_message: "is not an email"
+    domain:
+      invalid_message: "is not a domain"
+  i18n:
+    switcher:
+      vietnamese: "Việt"
+      english: "Anh"
+  messages:
+    publish:
+      success: "%{class_name} was successfully published"
+    expire:
+      success: "%{class_name} was successfully expired"
+    update:
+      success: "%{class_name} was successfully updated"
+    create:
+      success: "%{class_name} was successfully created"
+    destroy:
+      success: "%{class_name} was successfully destroyed"

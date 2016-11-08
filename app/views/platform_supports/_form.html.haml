@@ -1,0 +1,7 @@
+= simple_form_for('', url: save_platform_supports_url) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :content, as: 'text', input_html: { class: 'ckeditor', value: @platform_support }, label: false
+
+  = f.button :submit, class: 'btn btn-primary pull-right'

@@ -1,0 +1,24 @@
+%center
+  #show-user-box.show-user-box.visible.widget-box.no-border
+    .widget-body
+      .widget-main
+        = form_for(@user, as: :user, url: profile_path(current_user),  method: :patch  ) do |f|
+          %h4.header.green.lighter.bigger
+            %i.ace-icon.fa.fa-users.blue
+            User Infomation
+          %div
+            .form-group
+              %span.block.input-icon.input-icon-right
+                = f.text_field :email, :class => 'form-control', disabled: true
+                = fa_icon :envelope, class: 'ace-icon'
+            .form-group
+              %span.block.input-icon.input-icon-right
+                = f.text_field :name, :class => 'form-control'
+                = fa_icon :user, class: 'ace-icon'
+            .form-group
+              %span.block.input-icon.input-icon-right
+                = f.text_field :company, :class => 'form-control'
+                = fa_icon :building, class: 'ace-icon'
+            .space-24
+            .clearfix
+              = f.submit 'submit', class: 'width-65 pull-right btn btn-sm btn-success .btn-update'

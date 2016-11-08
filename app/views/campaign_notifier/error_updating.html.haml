@@ -1,0 +1,8 @@
+%h3 Ops,
+%p There was an error occurred while updating campaign on YOOSE: #{@campaign.name}
+%p User: #{@user.name} &lt;#{@user.email}&gt;
+
+Error messages:
+%ul
+  - @messages.each do |msg|
+    %li= msg

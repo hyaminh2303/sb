@@ -1,0 +1,10 @@
+en:
+  views:
+    campaign_summaries:
+      summary: 'Summary'
+      platform_breakdown: 'Platform Breakdown'
+      title: 'YOOSE Monthly Campaign Summary - %{month}'
+      description:
+        spend_vs_budget: '* Spend vs Budget indicates the % of budget spend on actual delivery. The lower %, the higher margin we have for the campaign'
+        ecpm: '* eCPM/eCPC indicates the actual CPM/CPC we bid for impressions / clicks'
+

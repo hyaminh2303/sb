@@ -1,0 +1,34 @@
+.row{ ng: { init: "isAdmin = #{current_user.is_admin?}" } }
+  .col-sm-7
+    .row
+      .col-sm-7.input-csv
+        %input#filename{:name => "filename", :type => "file", :id => "csvfile", :accept => ".csv"}/
+      .col-sm-5.button-csv
+        %button.btn.btn-primary.btn-sm{ng: {click: 'step3Ctrl.readCSV()'}}
+          = t('campaigns.new.import')
+        %button.btn.btn-primary.btn-sm{ng: {click: 'step3Ctrl.export()'}}
+          = t('campaigns.new.export')
+    #locations_grid.grid{'ui-grid' => 'step3Ctrl.gridOptions', 'ui-grid-edit' => true, 'ui-grid-exporter' => true, 'ui-grid-auto-resize' => true}
+    %hr.visible-md
+  .col-sm-5
+    %hr.visible-xs
+    .input-group
+      %input#searchInput.form-control{type:'text'}
+      %span.input-group-btn
+        %button#searchButton.btn.btn-primary.btn-sm{type: 'button'}
+          %i.fa.fa-search
+          = t('campaigns.new.search')
+    #map_canvas
+      %ui-gmap-google-map{center: 'step3Ctrl.mapOptions.center', events: 'step3Ctrl.mapOptions.events', zoom: 'step3Ctrl.mapOptions.zoom'}
+        %ui-gmap-circle{ng: {repeat: 'location in campaign.locations'}, center: 'location.center', radius: 'location.radius', clickable: 'step3Ctrl.circleOptions.clickable', control: 'step3Ctrl.circleOptions.control', draggable: 'step3Ctrl.circleOptions.draggable', editable: 'step3Ctrl.circleOptions.editable', events: 'step3Ctrl.circleOptions.events', fill: 'step3Ctrl.circleOptions.fill', geodesic: 'step3Ctrl.circleOptions.geodesic', stroke: 'step3Ctrl.circleOptions.stroke', visible: 'step3Ctrl.circleOptions.visible'}
+        %ui-gmap-marker{ng: {repeat: 'location in campaign.locations'}, idKey: 'location._id', coords: 'location.center',
+        options: 'step3Ctrl.markerOptions', events: 'step3Ctrl.markerOptions.events'}
+%ul.margin-15
+  %li
+    %h5= t('campaigns.new.instructions.step3')
+  %li
+    %h5= t('campaigns.new.instructions.max_location_selected')
+  %li
+    %h5
+      %a{:href => t('campaigns.new.instructions.link_csv_template') } 
+        = t('campaigns.new.instructions.download_csv_template')

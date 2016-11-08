@@ -1,0 +1,31 @@
+.page-header
+  %h1
+    List users
+    %small
+      %i.ace-icon.fa.fa-angle-double-right
+      overview &amp; stats
+%div{ng: {app: 'user.app', controller: 'UserController as usersCtr'}}
+  %div{ng: {show: "showMessage"}}
+    .alert.alert-success.alert-dismissable
+      %i.fa.fa-check
+      %button.close{:type => "button", ng: { click: 'usersCtr.hideMessage()' }} ×
+      {{message}}
+  .widget-box.transparent
+    .widget-body
+      .widget-main
+        .grid-stats
+          = link_to(new_user_path, class: 'btn btn-primary') do
+            %i.ace-icon.fa.fa-plus
+            = t('views.users.new.add_new')
+          .row
+            .form-group.filter-by-name
+              .col-xs-6
+              %label.col-xs-3.text-right.search-user-label Search
+              .col-xs-3
+                %input.form-control.pull-right{ng: {model: 'filterName', change: 'usersCtr.filterByName()'}, placeholder: 'Name or Email'}
+          .row
+            .col-xs-12
+              .grid{ui: {grid:'gridOptions', 'grid-pagination' => '', 'grid-selection' => ''}}
+                .watermark.watermark-grid{ng: {show: '!gridOptions.data.length'}} No data available
+              .widget-box-overlay{ng: {show: 'isLoading'}}
+                %i.ace-icon.loading-icon.fa.fa-spinner.fa-spin.fa-5x.white

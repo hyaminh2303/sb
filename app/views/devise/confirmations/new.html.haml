@@ -1,0 +1,20 @@
+#signup-box.signup-box.visible.widget-box.no-border
+  .widget-body.confirmation-instructions
+    .widget-main
+
+      %h4.header.green.lighter.bigger
+        %i.ace-icon.fa.fa-users.blue
+        Resend confirmation instructions
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        = render :partial => '/devise/shared/errors', locals: {model: resource}
+        .form-group
+          %span.block.input-icon.input-icon-right
+            = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email'
+            = fa_icon :envelope, class: 'ace-icon'
+        .space-24
+        .clearfix
+          = f.button 'Reset', type: 'reset', class: 'width-30 pull-left btn btn-sm'
+          = f.submit "Resend confirmation instructions", class: 'width-65 pull-right btn btn-sm btn-success'
+
+    .toolbar.center
+      = render 'devise/shared/links'

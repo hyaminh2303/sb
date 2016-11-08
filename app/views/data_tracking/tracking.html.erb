@@ -1,0 +1,68 @@
+<%= simple_form_for :date_tracking, :url => campaigns_data_tracking_path, :method => :get, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="row col-md-8">
+    <h3>Discrepancy between Mongo and Bidstalk on: <%= @date %></h3>
+  </div>
+  <div class="row pull-right col-md-4" style="padding-top: 15px; margin-right:5px;">
+    <div class="col-md-2 pull-right">
+      <%= f.button :submit, 'Show', class: 'btn-primary' %>
+    </div>    
+    <div class="col-md-6 pull-right">
+      <%= f.input :date, as: :string, inline_label: 'Date', label: false, input_html: { class: "datepicker", :'data-date-format' => "yyyy-mm-dd"} %>
+    </div>
+  </div>
+<% end %>
+
+<table class="table table-bordered discrepancy-table">
+  <thead>
+    <tr>
+      <th colspan="3" style="width: 150px;" class="center">Campaign Name</th>
+      <th colspan="2" class="center">Self Booking</th>
+      <th colspan="2" class="center">Bidstalk</th>
+      <th colspan="2" class="center">Discrepancy</th>
+    </tr>
+    <tr class="center">
+      <th colspan="2" class="center"></th>
+      <th></th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+    </tr>
+  </thead>
+  <tbody class="discrepancy-tbody">
+    <% @data.each do |data| %>
+    <tr class="center">
+      <td style="width: 5px;"></td>
+      <td style="width: 5px;">
+        <i class="ace-icon fa fa-circle <%= data[:status] %>"></i>
+      </td>
+      <td class="text-left">
+        <a href="/campaign_details/<%= data[:id]%>">
+          <%= data[:name]%>
+        </a>
+      </td>
+      <td><%= number_with_delimiter data[:mongo_views] %></td>
+      <td><%= number_with_delimiter data[:mongo_clicks] %></td>
+      <td><%= number_with_delimiter data[:bidstalk_views] %></td>
+      <td><%= number_with_delimiter data[:bidstalk_clicks] %></td>
+      <td><%= number_with_delimiter(data[:discrepancy_views]) +'%' %></td>
+      <td><%= number_with_delimiter(data[:discrepancy_clicks]) +'%' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tbody>
+    <tr style="font-weight: bold" class="center">
+      <td colspan="2"></td>
+      <td><strong>Total</strong>
+      </td>
+      <td><%= number_with_delimiter @total[:mongo_views] %></td>
+      <td><%= number_with_delimiter @total[:mongo_clicks] %></td>
+      <td><%= number_with_delimiter @total[:bidstalk_views] %></td>
+      <td><%= number_with_delimiter @total[:bidstalk_clicks] %></td>
+      <td><%= number_with_delimiter(@total[:discrepancy_views]) + '%' %></td>
+      <td><%= number_with_delimiter(@total[:discrepancy_clicks]) + '%' %></td>
+    </tr>
+  </tbody>
+</table>

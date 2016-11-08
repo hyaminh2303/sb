@@ -1,0 +1,390 @@
+id,category_code,name
+11,11,Arts & Entertainment
+12,12,Books & Literature
+13,13,Celebrity Fan/Gossip
+14,14,Fine Art
+15,15,Humor
+16,16,Movies
+17,17,Music
+18,18,Television
+19,19,Automotive
+20,20,Auto Parts
+21,21,Auto Repair
+22,22,Buying/Selling Cars
+23,23,Car Culture
+24,24,Certified Pre-Owned
+25,25,Convertible
+26,26,Coupe
+27,27,Crossover
+28,28,Diesel
+29,29,Electric Vehicle
+30,30,Hatchback
+31,31,Hybrid
+32,32,Luxury
+33,33,MiniVan
+34,34,Mororcycles
+35,35,Off-Road Vehicles
+36,36,Performance Vehicles
+37,37,Pickup
+38,38,Road-Side Assistance
+39,39,Sedan
+40,40,Trucks & Accessories
+41,41,Vintage Cars
+42,42,Wagon
+43,43,Business
+44,44,Advertising
+45,45,Agriculture
+46,46,Biotech/Biomedical
+47,47,Business Software
+48,48,Construction
+49,49,Forestry
+50,50,Government
+51,51,Green Solutions
+52,52,Human Resources
+53,53,Logistics
+54,54,Marketing
+55,55,Metals
+56,56,Careers
+57,57,Career Planning
+58,58,College
+59,59,Financial Aid
+60,60,Job Fairs
+61,61,Job Search
+62,62,Resume Writing/Advice
+63,63,Nursing
+64,64,Scholarships
+65,65,Telecommuting
+66,66,U.S. Military
+67,67,Career Advice
+68,68,Education
+70,70,Adult Education
+71,71,Art History
+72,72,College Administration
+73,73,College Life
+74,74,Distance Learning
+75,75,English as a 2nd Language
+76,76,Language Learning
+77,77,Graduate School
+78,78,Homeschooling
+79,79,Homework/Study Tips
+80,80,K-6 Educators
+81,81,Private School
+82,82,Special Education
+83,83,Studying Business
+84,84,Family & Parenting
+85,85,Adoption
+86,86,Babies & Toddlers
+87,87,Daycare/Pre School
+88,88,Family Internet
+89,89,Parenting - K-6 Kids
+90,90,Parenting teens
+91,91,Pregnancy
+92,92,Health & Fitness
+93,93,Exercise 
+94,94,A.D.D.
+95,95,AIDS/HIV
+96,96,Allergies
+97,97,Alternative Medicine 
+98,98,Arthritis 
+99,99,Asthma 
+100,100,Autism/PDD 
+101,101,Bipolar Disorder 
+102,102,Brain Tumor
+103,103,Cancer
+104,104,Cholesterol
+105,105,Chronic Fatigue Syndrome
+106,106,Chronic Pain
+107,107,Cold & Flu
+108,108,Deafness
+109,109,Dental Care
+110,110,Depression
+111,111,Dermatology
+112,112,Diabetes
+113,113,Epilepsy
+114,114,GERD/Acid Reflux
+115,115,Headaches/Migraines
+116,116,Heart Disease
+117,117,Herbs for Health
+118,118,Holistic Healing
+119,119,IBS/Crohn's Disease
+120,120,Incest/Abuse Support
+121,121,Incontinence
+122,122,Infertility
+123,123,Men's Health
+124,124,Nutrition
+125,125,Orthopedics
+126,126,Panic/Anxiety Disorders
+127,127,Pediatrics
+128,128,Physical Therapy
+129,129,Psychology/Psychiatry
+130,130,Senor Health
+131,131,Sexuality
+132,132,Sleep Disorders
+133,133,Smoking Cessation
+134,134,Substance Abuse
+135,135,Thyroid Disease
+136,136,Weight Loss
+137,137,Women's Health
+138,138,Food & Drink
+139,139,American Cuisine
+140,140,Barbecues & Grilling
+141,141,Cajun/Creole
+142,142,Chinese Cuisine
+143,143,Cocktails/Beer
+144,144,Coffee/Tea
+145,145,Cuisine-Specific
+146,146,Desserts & Baking
+147,147,Dining Out
+148,148,Food Allergies
+149,149,French Cuisine
+150,150,Health/Lowfat Cooking
+151,151,Italian Cuisine
+152,152,Japanese Cuisine
+153,153,Mexican Cuisine
+154,154,Vegan
+155,155,Vegetarian
+156,156,Wine
+157,157,Hobbies & Interests
+158,158,Art/Technology
+159,159,Arts & Crafts
+160,160,Beadwork
+161,161,Birdwatching
+162,162,Board Games/Puzzles
+163,163,Candle & Soap Making
+164,164,Card Games
+165,165,Chess
+166,166,Cigars
+167,167,Collecting
+168,168,Comic Books
+169,169,Drawing/Sketching
+170,170,Freelance Writing
+171,171,Genealogy
+172,172,Getting Published
+173,173,Guitar
+174,174,Home Recording
+175,175,Investors & Patents
+176,176,Jewelry Making
+177,177,Magic & Illusion
+178,178,Needlework
+179,179,Painting
+180,180,Photography
+181,181,Radio
+182,182,Roleplaying Games
+183,183,Sci-Fi & Fantasy
+184,184,Scrapbooking
+185,185,Screenwriting
+186,186,Stamps & Coins
+187,187,Video & Computer Games
+188,188,Woodworking
+189,189,Home & Garden
+190,190,Appliances
+191,191,Entertaining
+192,192,Environmental Safety
+193,193,Gardening
+194,194,Home Repair
+195,195,Home Theater
+196,196,Interior Decorating
+197,197,Landscaping
+198,198,Remodeling & Construction
+199,199,Law Gov't & Politics
+200,200,Immigration
+201,201,Legal Issues
+202,202,U.S. Government Resources
+203,203,Politics
+204,204,Commentary
+205,205,News
+206,206,International News
+207,207,National News
+208,208,Local News
+209,209,Personal Finance
+210,210,Beginning Investing
+211,211,Credit/Debt & Loans
+212,212,Financial News
+213,213,Financial Planning
+214,214,Hedge Fund
+215,215,Insurance
+216,216,Investing
+217,217,Mutual Funds
+218,218,Options
+219,219,Retirement Planning
+220,220,Stocks
+221,221,Tax Planning
+222,222,Society
+223,223,Dating
+224,224,Divorce Support
+225,225,Gay Life
+226,226,Marriage
+227,227,Senior Living
+228,228,Teens
+229,229,Weddings
+230,230,Ethnic Specific
+231,231,Science
+232,232,Astrology
+233,233,Biology
+234,234,Chemistry
+235,235,Geology
+236,236,Paranormal Phenomena
+237,237,Physics
+238,238,Space/Astronomy
+239,239,Geography
+240,240,Botany
+241,241,Weather
+242,242,Pets
+243,243,Aquariums
+244,244,Birds
+245,245,Cats
+246,246,Dogs
+247,247,Large Animals
+248,248,Reptiles
+249,249,Veterinary Medicine
+250,250,Sports
+251,251,Auto Racing
+252,252,Baseball
+253,253,Bicycling
+254,254,Bodybuilding
+255,255,Boxing
+256,256,Canoeing/Kayaking
+257,257,Cheerleading
+258,258,Climbing
+259,259,Cricket
+260,260,Figure Skating
+261,261,Fly Fishing
+262,262,Football
+263,263,Freshwater Fishing
+264,264,Game & Fish
+265,265,Golf
+266,266,Horse Racing
+267,267,Horses
+268,268,Hunting/Shooting
+269,269,Inline Skating
+270,270,Martial Arts
+271,271,Mountain Biking
+272,272,NASCAR Racing
+273,273,Olympics
+274,274,Paintball
+275,275,Power & Motorcycles
+276,276,Pro Basketball
+277,277,Pro Ice Hockey
+278,278,Rodeo
+279,279,Rugby
+280,280,Running/Jogging
+281,281,Sailing
+282,282,Saltwater Fishing
+283,283,Scuba Diving
+284,284,Skateboarding
+285,285,Skiing
+286,286,Snowboarding
+287,287,Surfing/Bodyboarding
+288,288,Swimming
+289,289,Table Tennis/Ping-Pong
+290,290,Tennis
+291,291,Volleyball
+292,292,Walking
+293,293,Waterski/Wakeboard
+294,294,World Soccer
+295,295,Style & Fashion
+296,296,Beauty
+297,297,Body Art
+298,298,Fashion
+299,299,Jewelry
+300,300,Clothing
+301,301,Accessories
+302,302,Technology & Computing
+303,303,3-D Graphics
+304,304,Animation
+305,305,Antivirus Software
+306,306,C/C++
+307,307,Cameras & Camcorders
+308,308,Cell Phones
+309,309,Computer Certification
+310,310,Computer Networking
+311,311,Computer Peripherals
+312,312,Computer Reviews
+313,313,Data Centers
+314,314,Databases
+315,315,Desktop Publishing
+316,316,Desktop Video
+317,317,Email
+318,318,Graphics Software
+319,319,Home Video/DVD
+320,320,Internet Technology
+321,321,Java
+322,322,JavaScript
+323,323,Mac Support
+324,324,MP3/MIDI
+325,325,Net Conferencing
+326,326,Net for Beginners
+327,327,Network Security
+328,328,Palmtops/PDAs
+329,329,PC Support
+330,330,Portable
+331,331,Entertainment
+332,332,Shareware/Freeware
+333,333,Unix
+334,334,Visual Basic
+335,335,Web Clip Art
+336,336,Web Design/HTML
+337,337,Web Search
+338,338,Windows
+339,339,Travel
+340,340,Adventure Travel
+341,341,Africa
+342,342,Air Travel
+343,343,Australia & New Zealand
+344,344,Bed & Breakfasts
+345,345,Budget Travel
+346,346,Business Travel
+347,347,By US Locale
+348,348,Camping
+349,349,Canada
+350,350,Caribbean
+351,351,Cruises
+352,352,Eastern Europe
+353,353,Europe
+354,354,France
+355,355,Greece
+356,356,Honeymoons/Getaways
+357,357,Hotels
+358,358,Italy
+359,359,Japan
+360,360,Mexico & Central America
+361,361,National Parks
+362,362,South America
+363,363,Spas
+364,364,Theme Parks
+365,365,Traveling with Kids
+366,366,United Kingdom
+367,367,Real Estate
+368,368,Apartments
+369,369,Architects
+370,370,Buying/Selling Homes
+371,371,Shopping
+372,372,Contests & Freebies
+373,373,Couponing
+374,374,Comparison
+375,375,Engines
+376,376,Religion & Spirituality
+377,377,Alternative Religions
+378,378,Atheism/Agnosticism
+379,379,Buddhism
+380,380,Catholicism
+381,381,Christianity
+382,382,Hinduism
+383,383,Islam
+384,384,Judaism
+385,385,Latter-Day Saints
+386,386,Pagan/Wiccan
+387,387,Uncategorized
+388,388,Non-Standard Content
+389,389,Unmoderated UGC
+390,390,Extreme Graphic/Explicit Violence
+391,391,Pornography
+392,392,Profane Content
+393,393,Hate Content
+394,394,Under Construction
+395,395,Incentivized
+396,396,Illegal Content
+397,397,Illegal Content
+398,398,Warez
+399,399,Spyware/Malware
+400,400,Copyright Infringement

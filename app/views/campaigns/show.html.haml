@@ -1,0 +1,118 @@
+.widget-box
+  .widget-header.widget-header-blue.widget-header-flat
+    %h4.widget-title.lighter New Item Wizard
+    .widget-toolbar
+      %label
+        %small.green
+          %b Validation
+        %input#skip-validation.ace.ace-switch.ace-switch-4{:type => "checkbox"}
+          %span.lbl.middle
+  .widget-body
+    .widget-main
+      #my-wizard
+        %div
+          %ul.steps
+            %li.active
+              %span.step 1
+              %span.title Validation states
+            %li
+              %span.step 2
+              %span.title Alerts
+            %li
+              %span.step 3
+              %span.title Payment Info
+            %li
+              %span.step 4
+              %span.title Other Info
+          %hr
+          .step-content
+            .step-pane.active{ui: {view: ''}}
+              %h3.lighter.block.green Enter the following information
+              = simple_form_for :campaign do |f|
+                .form-horizontal
+                  .row
+                    = f.input :name, wrapper: :campaign_show_horizontal_form_group
+                    = f.input :ad_domain, wrapper: :campaign_show_horizontal_form_group
+                  .row
+                    = f.input :type, input_html: {disabled: '', value: 'IMAGE'}, wrapper: :campaign_show_horizontal_form_group
+                  .row
+                    = f.input :national, label:'Country', wrapper: :campaign_show_horizontal_form_select,
+                      select_wrapper_html: {:'ng-model' => 'country.selected', :'theme' => 'bootstrap'},
+                      select_match_wrapper_html: {:'placeholder' => 'Select or search a country in the list...'},
+                      hint: '{{$select.selected.name}}',
+                      select_choices_wrapper_html: {:'repeat' => 'country in countries | filter: $select.search'},
+                      select_choices_text_wrapper_html: {:'ng-bind-html' => 'country.name | highlight: $select.search'}
+                    = f.input :pricing_model, wrapper: :campaign_show_horizontal_form_select,
+                      select_wrapper_html: {:'ng-model' => 'country.selected', :'theme' => 'bootstrap'},
+                      select_match_wrapper_html: {:'placeholder' => 'Select or search a country in the list...'},
+                      hint: '{{$select.selected.name}}',
+                      select_choices_wrapper_html: {:'repeat' => 'country in countries | filter: $select.search'},
+                      select_choices_text_wrapper_html: {:'ng-bind-html' => 'country.name | highlight: $select.search'}
+                  .row
+                    = f.input :category, wrapper: :campaign_show_horizontal_form_select,
+                      select_wrapper_html: {:'ng-model' => 'country.selected', :'theme' => 'bootstrap'},
+                      select_match_wrapper_html: {:'placeholder' => 'Select or search a country in the list...'},
+                      hint: '{{$select.selected.name}}',
+                      select_choices_wrapper_html: {:'repeat' => 'country in countries | filter: $select.search'},
+                      select_choices_text_wrapper_html: {:'ng-bind-html' => 'country.name | highlight: $select.search'}
+                    = f.input :price, input_html: {disabled: '', value: ''}, wrapper: :campaign_show_horizontal_form_group
+                .row
+                  = f.input :timezone, wrapper: :campaign_show_vertical_form_select,
+                      select_wrapper_html: {:'ng-model' => 'country.selected', :'theme' => 'bootstrap'},
+                      select_match_wrapper_html: {:'placeholder' => 'Select or search a country in the list...'},
+                      hint: '{{$select.selected.name}}',
+                      select_choices_wrapper_html: {:'repeat' => 'country in countries | filter: $select.search'},
+                      select_choices_text_wrapper_html: {:'ng-bind-html' => 'country.name | highlight: $select.search'}
+                  = f.input :start_time, wrapper: :campaign_show_vertical_date_picker,
+                    input_html: {:'close-text' => 'Close', 'date-options' => 'dateOptions', 'datepicker-popup' => '{{format}}', 'is-open' => 'opened', 'ng-model' => 'dt'},
+                    button_wrapper_html: {:'ng-click' => "open($event,'picker1')"}
+                  = f.input :end_time, wrapper: :campaign_show_vertical_date_picker,
+                    input_html: {:'close-text' => 'Close', 'date-options' => 'dateOptions', 'datepicker-popup' => '{{format}}', 'is-open' => 'opened', 'ng-model' => 'dt'},
+                    button_wrapper_html: {:'ng-click' => "open($event,'picker1')"}
+            .step-pane{"data-step" => "2"}
+              %div
+                .alert.alert-success
+                  %button.close{"data-dismiss" => "alert", :type => "button"}
+                    %i.ace-icon.fa.fa-times
+                  %strong
+                    %i.ace-icon.fa.fa-check
+                    Well done!
+                  You successfully read this important alert message.
+                  %br
+                .alert.alert-danger
+                  %button.close{"data-dismiss" => "alert", :type => "button"}
+                    %i.ace-icon.fa.fa-times
+                  %strong
+                    %i.ace-icon.fa.fa-times
+                    Oh snap!
+                  Change a few things up and try submitting again.
+                  %br
+                .alert.alert-warning
+                  %button.close{"data-dismiss" => "alert", :type => "button"}
+                    %i.ace-icon.fa.fa-times
+                  %strong Warning!
+                  Best check yo self, you're not looking too good.
+                  %br
+                .alert.alert-info
+                  %button.close{"data-dismiss" => "alert", :type => "button"}
+                    %i.ace-icon.fa.fa-times
+                  %strong Heads up!
+                  This alert needs your attention, but it's not super important.
+                  %br
+            .step-pane{"data-step" => "3"}
+              .center
+                %h3.blue.lighter This is step 3
+            .step-pane{"data-step" => "4"}
+              .center
+                %h3.green Congrats!
+                Your product is ready to ship! Click finish to continue!
+      %hr
+      .wizard-actions
+        %button.btn.btn-prev
+          %i.ace-icon.fa.fa-arrow-left
+          Prev
+        %button.btn.btn-success.btn-next{"data-last" => "Finish"}
+          Next
+          %i.ace-icon.fa.fa-arrow-right.icon-on-right
+            / /.widget-main
+            / /.widget-body

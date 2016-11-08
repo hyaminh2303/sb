@@ -1,0 +1,43 @@
+%alert{ng: {show: 'step2Ctrl.error'}, type: 'danger', close: 'step2Ctrl.closeAlert()'}
+  {{step2Ctrl.error.msg}}
+%div.dropzone.dz-clickable{accept: 'image/*',
+  :'allow-dir' => 'true',
+  :'drag-over-class' => 'dragover',
+  ng: {form: 'form', file: {drop: '', select: '', change: 'step2Ctrl.addBanners($files, $event)'}, model: 'step2Ctrl.selectedFiles', multiple: 'true', accept: "'image/*'"}}
+  .dz-default.dz-message{ng: {hide: 'step2Ctrl.hasBanners()'}}
+    %span
+      %span.bigger-150.bolder
+        %i.ace-icon.fa.fa-caret-right.red
+        Drop files
+      to upload
+      %span.smaller-80.grey (or click)
+      %br/
+      %i.upload-icon.ace-icon.fa.fa-cloud-upload.blue.fa-3x
+  %div{'ng-no-file-drop' => ''} File Drag/Drop is not supported for this browser
+  .dz-preview.dz-image-preview{ng: {hide: 'b._destroy', repeat: 'b in campaign.banners', click: 'step2Ctrl.stopClickFromContainer($event)'}}
+    .dz-details
+      .dz-filename
+        %span
+          {{b.name}}
+      %img{ng: {alt: '{{b.name}}', src: '{{b.file.dataUrl}}'}}
+    .dz-success-mark
+      %span
+    .dz-error-mark
+      %span
+    .dz-additional-data
+      .form-group
+        %label Name
+        %input.form-control.banner-name{type: 'text', name: 'name', ng: {model: 'b.name', disabled: 'step2Ctrl.disableEditInfo(b)'}, validator: '[required]', :'validator-invoke' => 'watch'}
+      .form-group
+        %label Landing URL
+        %input.form-control.banner-landing-url{type: 'text', name: 'landing_url', ng: {model: 'b.landingUrl', disabled: 'step2Ctrl.disableEditInfo(b)'}, validator: '[required, url]', :'validator-invoke' => 'watch'}
+    %a.dz-remove{ng: {click: 'step2Ctrl.removeBanner(b, $event)'}} Remove file
+  %progressbar.progress-striped.active{type: 'success', value: 'step2Ctrl.progressPercentage', ng: {show: 'step2Ctrl.progressPercentage'}}
+    %span{ng: {bind: 'step2Ctrl.progressPercentage + "%"'}}
+%ul.margin-15
+  %li
+    %h5= t('campaigns.new.instructions.step2.upload')
+  %li
+    %h5= t('campaigns.new.instructions.step2.creative_size')
+  %li
+    %h5= t('campaigns.new.instructions.step2.filename_extension')

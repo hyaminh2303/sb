@@ -1,0 +1,111 @@
+%form.form-horizontal{name: 'step1Form', class: 'step1-form'}
+  .form-group
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.campaign_name')
+    .col-sm-4
+      %input.form-control{ng: {model: 'campaign.name', required: 'true'}, placeholder: t('campaigns.new.campaign_name'), type: 'text'}
+
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.ad_domain')
+    .col-sm-4
+      %input.form-control{ng: {model: 'campaign.adDomain', required: 'true'}, placeholder: 'http://example.com', type: 'url'}
+
+  .form-group
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.campaign_type')
+    .col-sm-4
+      %input.form-control{placeholder: t('campaigns.new.campaign_type'), type: 'text', :required => '', value: 'Image', disabled: ''}
+
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.pricing_model')
+    .col-sm-4
+      %ui-select{ng: {model: 'campaign.pricingModel', required: 'true'},
+      'on-select' => 'onPricingModelChange()', 'ng-disabled' => '!campaign.isDraft'}
+        %ui-select-match
+          {{$select.selected}}
+        %ui-select-choices{:repeat => 'p in pricingModels'}
+          {{p}}
+
+  .form-group
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.country')
+    .col-sm-4
+      %ui-select{'ng-model' => 'campaign.countryId', 'on-select' => 'onCountryChange()', required: '', 'ng-disabled' => '!campaign.isDraft'}
+        %ui-select-match{placeholder: t('campaigns.new.country_placeholder')}
+          {{$select.selected.name}}
+        %ui-select-choices{:repeat => 'c.id as c in countries | filter: $select.search'}
+          {{c.name}}
+
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.price')
+    .col-sm-4
+      %div.input-group
+        %span.input-group-addon $
+        %input.form-control{ng: {model: 'campaign.price'}, readonly: true, type: 'text'}
+
+  .form-group
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.category')
+    .col-sm-4
+      %ui-select{ng: {model: 'campaign.categoryId'}, class: 'input-select2', required: ''}
+        %ui-select-match{:placeholder => t('campaigns.new.category_placeholder')}
+          %span{"ng-bind" => "$select.selected.name"}
+        %ui-select-choices{'group-by'=> "'parentName'", :repeat => "item.id as item in (categories) | filter: $select.search"}
+          %span{"ng-bind" => "item.name"}
+
+    %label.col-sm-2.control-label
+      %strong= t('campaigns.new.budget')
+    .col-sm-4
+      %div.input-group
+        %span.input-group-addon $
+        %input.form-control{ng:{model: 'campaign.budget', required: 'true', change: 'checkBudget()', disabled: "campaign.status=='completed'"},
+         'ng-model-options'=>"{ updateOn: 'default blur', debounce: { 'default': 1500, 'blur': 0 } }",
+          min: 0, placeholder: t('campaigns.new.budget'), type: 'number'}
+
+  .form-group
+    %label.col-sm-2.control-label
+      %strong{'ng-if' => 'viewState.isAdmin'}= t('campaigns.new.city_targeting')
+    .col-sm-1
+      %input.form-control{ng: {model: 'campaign.targetCity', disabled: '!campaign.isDraft', if: 'viewState.isAdmin'}, type: 'checkbox'}
+    %label.col-sm-2.control-label
+      %strong{ng: {show: 'viewState.isAdmin'}}= t('campaigns.new.bid_optimization')
+    .col-sm-1
+      %input.form-control{ng: {model: 'campaign.allowBidOptimization', show: 'viewState.isAdmin'}, type: 'checkbox'}
+
+    %label.col-sm-2.control-label
+      %strong{'ng-if' => "campaign.pricingModel=='CPC'"}= t('campaigns.new.target') + ' Clicks'
+      %strong{'ng-if' => "campaign.pricingModel=='CPM'"}= t('campaigns.new.target') + ' Views'
+    .col-sm-4
+      %input.form-control{ng: {model: 'campaign.target'}, readonly: true, type: 'number'}
+
+  .form-group
+    %div.col-sm-4
+      %label
+        %strong= t('campaigns.new.timezone')
+      %ui-select{'ng-model' => 'campaign.timezoneId', required: ''}
+        %ui-select-match{placeholder: t('campaigns.new.timezone_placeholder')}
+          {{$select.selected.name}}
+        %ui-select-choices{:repeat => 't.id as t in timezones | filter: $select.search'}
+          {{t.name}}
+
+    %div.col-sm-4
+      %label
+        %strong= t('campaigns.new.start_time')
+
+      %div.input-group
+        %input.form-control.start-time{'close-text' => 'Close', 'is-open' => 'isStartOpen',  'ng-model' => 'campaign.startTime', 'ng-change' => 'onStartDateChange()',
+                            'ng-required' => true, :type => 'text', 'uib-datepicker-popup' => 'dd MMM yy',
+                            'min-date' => 'minStartTime', 'show-button-bar' => 'false', 'ng-disabled' => "campaign.status == 'completed' || campaign.status == 'live' || campaign.status == 'paused'", readonly: true}
+        %span.input-group-btn
+          %button.btn.btn-primary{'ng-click' => 'isStartOpen=true', :type => 'button', 'ng-disabled' => "campaign.status == 'terminated' || campaign.status == 'completed' || (campaign.status == 'live' && campaign.hasTrackingData) || (campaign.status == 'paused' && campaign.hasTrackingData) || (!campaign.isDraft && campaign.status == 'live' && campaign.hasTrackingData)"}
+            %i.fa.fa-calendar
+    %div.col-sm-4
+      %label
+        %strong= t('campaigns.new.end_time')
+      %div.input-group
+        %input.form-control.end-time{'close-text' => 'Close', 'is-open' => 'isEndOpen',  'ng-model' => 'campaign.endTime',
+                              'ng-required' => true, :type => 'text', 'uib-datepicker-popup' => 'dd MMM yy',
+                               'min-date' => 'minEndTime', 'show-button-bar' => 'false', 'ng-disabled' => "campaign.status == 'completed'", readonly: true}
+          %span.input-group-btn
+            %button.btn.btn-primary{'ng-click' => 'isEndOpen=true', :type => 'button', 'ng-disabled' => "campaign.status == 'completed' || campaign.status == 'terminated'"}
+              %i.fa.fa-calendar

@@ -1,0 +1,11 @@
+.user-budget-modal
+  .modal-header
+    %h3.modal-title Notification!
+  .modal-body
+    .row
+      .form-group.clearfix
+        .col-sm-12
+          .text-bold
+            {{message}}
+  .modal-footer
+    %button.btn.btn-primary{"ng-click" => "ok()", :type => "button"} OK

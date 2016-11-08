@@ -1,0 +1,8 @@
+en:
+  models:
+    currency:
+      name: "Currency"
+      fields:
+        name: "Name"
+        code: "Code"
+        exchange_rate: "Current Exchange Rate"

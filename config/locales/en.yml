@@ -1,0 +1,63 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  user_error: "Something went wrong, please check your input data for each steps."
+  campaigns:
+    over_budget: "Can't over user remaining budget"
+    minimum_budget: "Minimum campaign budget is 50 USD!"
+    minimum_budget_admin: "Minimum campaign budget cannot be 0 or less than 0!"
+    no_sufficient: "No sufficient fund in your acount!"
+    decrease_budget: "Cannot decrease campaign budget!"
+    repare_data: 'The tracking data will be cleaned up and get from MongoDB. Are you sure ?'
+  
+  role: Role
+
+  worker_mailer:
+    over_delivery:
+      subject: 'Pause campaign due to over delivery reached (%{reached})  - optimization worker'
+      body: '<p>Hi Ops,</p><p>The campaign (%{campaign}) has been paused by optimization worker %{time} due to the over delivery reached (%{reached}) </p><p>Best Regards,</p><p>YOOSE</p>'
+
+    over_budget:
+      subject: 'Pause campaign due to over of budget  - optimization worker'
+      body: '<p>Hi Ops,</p><p>The campaign (%{campaign}) has been paused by optimization worker %{time} due to over of budget </p><p>Best Regards,</p><p>YOOSE</p>'
+
+    resume_campaign:
+      subject: 'Resume campaign - optimization worker'
+      body: '<p>Hi Ops,</p><p>The campaign (%{campaign}) has been resumed by optimization worker %{time}</p><p>Best Regards,</p><p>YOOSE</p>'
+    
+    increase_maxbid:
+      subject: 'Under delivery campaign - optimization worker'
+      body: '<p>Hi Ops,</p><p>The max_bid of campaign (%{campaign}) has been increased to 0.05 by optimization worker %{time} </p><p>Best Regards,</p><p>YOOSE</p>'
+
+    refund_budget: 
+      subject: 'Refund remaining budget - optimization worker'
+      body: '<p>Hi Ops,</p><p>The campaign (%{campaign}) has been refunded [%{remaining_budget}] to the account [%{user}] by optimization worker %{time} </p><p>Best Regards,</p><p>YOOSE</p>'
+
+    error_worker:
+      subject: 'Error - optimization worker'
+      body: "<p>Hi Ops,</p><p>The action [%{action}] can't be performed completely by optimization worker due to an error %{time}. Please see the error below: <br>Campaign name: %{campaign}<br>Error: %{error} </p><p>Best Regards,</p><p>YOOSE</p>"
+  send_email_time: 'at %I:%M %p on %d/%m/%y'
+  prefix_email_production: '[GeoPoint]'
+  prefix_email_test: '[TEST]'
+  prefix_email_staging: '[TEST]'
+  prefix_email_development: '[TEST]'

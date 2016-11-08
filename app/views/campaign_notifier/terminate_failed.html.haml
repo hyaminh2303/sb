@@ -1,0 +1,10 @@
+%p Hi Ops,
+%p Campaign #{@campaign.name} has been terminated by terminated by #{@username} at #{@campaign.updated_at.strftime('%H:%M %p')} on #{@campaign.updated_at.strftime('%d/%m/%y')}
+%p Please go into Applift to delete the campaign.
+%p Campaign ID: #{@campaign.order.get_details[:id]}
+%br
+- if @error
+  %p Error message: #{@error}
+  %br
+%p Best Regards,
+%p YOOSE

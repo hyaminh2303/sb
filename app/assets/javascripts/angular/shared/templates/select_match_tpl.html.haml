@@ -1,0 +1,7 @@
+.ui-select-match{"ng-class" => "{'btn-default-focus':$select.focus}", "ng-disabled" => "$select.disabled", "ng-hide" => "$select.open"}
+  %span.btn.btn-white.form-control.ui-select-toggle{"aria-label" => "{{ $select.baseTitle }} activate", "ng-click" => "$select.activate()", "ng-disabled" => "$select.disabled", :style => "outline: 0;", :tabindex => "-1"}
+    %span.ui-select-placeholder.text-muted{"ng-show" => "$select.isEmpty()"} {{$select.placeholder}}
+    %span.ui-select-match-text.pull-left{"ng-class" => "{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty()}", "ng-hide" => "$select.isEmpty()", "ng-transclude" => ""}
+    %i.caret.pull-right{"ng-click" => "$select.toggle($event)"}
+    %a.btn.btn-xs.btn-link.pull-right{"aria-label" => "{{ $select.baseTitle }} clear", "ng-click" => "$select.clear($event)", "ng-show" => "$select.allowClear && !$select.isEmpty()", :style => "margin-right: 10px"}
+      %i.fa.fa-times{"aria-hidden" => "true"}

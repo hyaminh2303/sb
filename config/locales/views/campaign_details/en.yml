@@ -1,0 +1,102 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  views:
+    campaign_details:
+      name: "Campaign Name"
+      show:
+        title: 'Individual Campaign'
+
+      group_stats:
+        title: 'Campaign Group Statistics'
+
+      group_details:
+        title: 'Campaign Group Details'
+
+      actions:
+        daily_report: 'Daily Report'
+        location_report: 'Location Report'
+        export_report: 'Export Report'
+        export_report_as_agency: 'Export Agency Report'
+        click_here: 'Click here'
+
+      exchange_rate:
+        title: 'Exchange Rate'
+        message: 'Exchange Rate: 1 %{currency} = %{rate} USD'
+
+      fields:
+        number: 'No.'
+        location: 'Location'
+        city: 'City'
+        os: 'OS'
+        date: 'Date'
+        group_name: 'Group Name'
+        views: 'Views'
+        clicks: 'Clicks'
+        actual_spend: 'Actual Spend'
+        spend: 'Spend'
+        ctr: 'CTR'
+        ecpm: 'eCPM'
+        ecpc: 'eCPC'
+        platform: 'Platform'
+        grand_total: 'Grand Total'
+        delivery_realized: 'Delivery Realized'
+        delivery_expected: 'Delivery Expected'
+        campaign_health: 'Campaign Health'
+        daily_pacing: 'Daily Pacing of Impr./Click'
+        exchange_url: 'Exchange URL'
+        category: 'Category'
+        country: 'Country'
+        end_date: 'End Date'
+        start_date: 'Start Date'
+        unit_price: 'Unit Price'
+        target: 'Target'
+        type: 'Type'
+        total_budget: 'Total Budget'
+        media_budget: 'Media Budget'
+        development_fee: 'Creative Development Fee'
+        advertiser: 'Advertiser'
+        agency_name: 'Agency Name'
+        sales_agency_commission: 'Sales Agency Commission'
+        banner_size: 'Banner Size'
+        impressions: 'Impressions'
+        creative: 'Creatives'
+        device: 'Devices'
+        dates: 'Dates'
+        ad_group: 'Ad Group'
+        number_of_device_ids: '# of device IDs'
+        device_ids_vs_views: 'Device IDs vs. Views'
+        frequency_cap: 'Frequency cap'
+        carrier: 'Carrier'
+        application: 'Application'
+        ad_domain: 'Ad Domain'
+        owner_campaign: 'Owner Campaign'
+        delivery_realized: 'Delivery Realized'
+        delivery_expected: 'Delivery Expected'
+        campaign_health: 'Campaign Health'
+        daily_pacing: 'Daily Pacing of Impr./Click'
+        click_discrepancy: 'Click discrepancy'
+        impression_discrepancy: 'Impression discrepancy'
+        self_bidstalk_impressions: 'Selfbooking / Bidstalk impressions'
+        self_bidstalk_clicks: 'Selfbooking / Bidstalk clicks'
+        discrepancy: 'Discrepancy'
+

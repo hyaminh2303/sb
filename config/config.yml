@@ -1,0 +1,25 @@
+development:
+  redis:
+    tracking:
+      host: docker-host
+      port: 6379
+
+test:
+  redis:
+    tracking:
+      host: localhost
+      port: 6379
+
+staging:
+  redis:
+    tracking:
+      host: 10.150.30.125
+      port: 6379
+      password: v3asubdf64u6v73vfk7346tgf7236f
+
+production:
+  redis:
+    tracking:
+      host: 10.174.14.206
+      port: 6379
+      password: v3asubdf64u6v73vfk7346tgf7236f

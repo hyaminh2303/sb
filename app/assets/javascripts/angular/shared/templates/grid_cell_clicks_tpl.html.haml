@@ -1,0 +1,4 @@
+.pull-left
+  %div
+    {{ row.entity[col.field] }}
+  %small{ng: {if: "row.entity['id'] > 0"}, "tooltip" => "Target Click", "tooltip-placement" => "right"} {{ row.entity['targetClick'] }}

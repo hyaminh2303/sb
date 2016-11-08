@@ -1,0 +1,7 @@
+en:
+  models:
+    sales_by_country:
+      name: 'Sales by Country'
+      fields:
+        country_code: 'Territory'
+        total_revenue: 'Total Revenue'

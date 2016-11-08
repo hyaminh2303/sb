@@ -1,0 +1,38 @@
+%table.table.table-bordered.table-striped{ ng: { controller: 'PopoverController', init: "init('#show_exchange_rate')"}}
+  %thead
+    -# ADMIN ONLY
+    %tr
+      %th= t('views.campaign_details.name')
+      %th= model.name
+  %tbody
+    %tr
+      %td= t('views.campaign_details.fields.total_budget')
+      %td
+        = model.total_budget_as_money.format
+    %tr
+      %td= t('views.campaign_details.fields.type')
+      %td= model.pricing_model
+    %tr
+      %td= t('views.campaign_details.fields.target')
+      %td= (number_with_delimiter model.target)
+    %tr
+      %td= t('views.campaign_details.fields.unit_price')
+      %td= Money.new(model.price_cents).format
+    %tr
+      %td= t('views.campaign_details.fields.start_date')
+      %td= model.start_time
+    %tr
+      %td= t('views.campaign_details.fields.end_date')
+      %td= model.end_time
+    %tr
+      %td= t('views.campaign_details.fields.country')
+      %td= Country.find(model.country_id).name.to_s
+    %tr
+      %td= t('views.campaign_details.fields.category')
+      %td= Category.find(model.category_id).name
+    %tr
+      %td= t('views.campaign_details.fields.ad_domain')
+      %td= model.ad_domain
+    %tr
+      %td= t('views.campaign_details.fields.owner_campaign')
+      %td= model.user.name

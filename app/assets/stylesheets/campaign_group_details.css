@@ -1,0 +1,87 @@
+.tab-content {
+    margin-top: 20px;
+}
+
+#campaign-nav-tab {
+    margin-top: 20px;
+}
+
+#campaign-tracking-table.dataTable.admin tr td, #campaign-tracking-table.dataTable.user tr.odd td {
+    background-color: #f3f4f5;
+}
+#campaign-tracking-table.dataTable tr.sub td {
+    background-color: #ffffff;
+    border-right: none !important;
+    border-left: none !important;
+}
+
+#campaign-location-table.dataTable tr.odd td {
+    background-color: #f3f4f5;
+}
+
+#campaign-os-table.dataTable tr.odd td {
+    background-color: #f3f4f5;
+}
+
+#campaign-creative-table.dataTable tr.odd td {
+    background-color: #f3f4f5;
+}
+
+#campaign-device-table.dataTable tr.odd td {
+    background-color: #f3f4f5;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    padding-left: 10px;
+}
+
+td.details-control {
+    background-image: url('/images/details_open.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background-image: url('/images/details_close.png');
+}
+
+/* Fix Jquery datatable missing css for bootstrap datatable */
+div.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+
+div.dataTables_info {
+    padding-top: 8px;
+}
+
+div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+}
+
+.hidden_only{
+    display: none;
+}
+
+.sidebar {
+    margin-top: 10px;
+}
+
+.progressing{
+    background: transparent image_url('ajax-progressing.gif') 50% 50% no-repeat !important;
+}
+
+.bg-darkred{
+    background: #d32f2f;
+    color: white;
+}
+
+.bg-darkblue {
+    background: #607d8b;
+}
+

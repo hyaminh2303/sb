@@ -1,0 +1,18 @@
+.user-budget-modal
+  .modal-header
+    %h3.modal-title Add budget to {{userEmail}}
+  .modal-body
+    .row
+      .form-group.clearfix
+        %lable.col-sm-3 Current budget
+        .col-sm-9
+          .text-bold
+            {{userCurrentBudget}} $
+    .row
+      .form-group.clearfix
+        %lable.col-sm-3 Budget
+        .col-sm-9
+          %input{ name: 'user[budget]', ng: { model: 'userBudget' }, class: 'form-control', type: 'number'} 
+  .modal-footer
+    %button.btn.btn-primary{"ng-click" => "ok()", :type => "button"} OK
+    %button.btn.btn-warning{"ng-click" => "cancel()", :type => "button"} Cancel

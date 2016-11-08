@@ -1,0 +1,16 @@
+%p 
+  = "A new user has signed up for Self-booking platform at #{@time.strftime('%H:%M %p')} on #{@time.strftime('%d/%m/%y')}." 
+%p
+  = "Name: #{@user.name}"
+  %br
+  = "Email: #{@user.email}"
+  %br
+  = "Company: #{@user.company}"
+%p
+  Please assess the profile and click 
+  = link_to 'Here', user_url(@user)
+  for approval. 
+%p
+  Thank you, 
+  %br
+  YOOSE

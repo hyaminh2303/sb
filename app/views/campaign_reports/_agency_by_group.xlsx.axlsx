@@ -1,0 +1,145 @@
+wb.add_worksheet(name: t('views.campaign_reports.workbook.by_group.title')) do |sheet|
+
+  sheet.column_widths nil, nil, nil, nil, nil, nil, nil, nil, nil, 10, 10
+
+  r = [
+      campaign.name, '', '', '', '', '', '', '', '',
+      t('views.campaign_reports.workbook.fields.start_date'),
+      t('views.campaign_reports.workbook.fields.end_date'),
+      t('views.campaign_reports.workbook.fields.exchange_rate'),
+      campaign.campaign_type, '',
+      t('views.campaign_reports.workbook.fields.media_budget'), ''
+  ]
+  sheet.add_row r, style: [
+                     @title, @title, @title, @title, @title, @title, @title,
+                     nil, nil,
+                     @title_with_border, @title_with_border, @title_with_border,
+                     @title_with_border, @title_with_border, @title_with_border, @title_with_border
+                 ]
+  sheet.merge_cells 'A1:G1' # Campaign Title
+  sheet.merge_cells 'M1:N1' # Campaign CPM
+  sheet.merge_cells 'O1:P1' # Campaign total budget
+
+  r = [
+      t('views.campaign_details.fields.group_name'),
+      t('views.campaign_details.fields.views'),
+      t('views.campaign_details.fields.clicks'),
+      t('views.campaign_details.fields.ctr'),
+      t('views.campaign_details.fields.actual_spend'),
+      t('views.campaign_details.fields.ecpm'),
+      t('views.campaign_details.fields.ecpc'),
+      '', '',
+      campaign.active_at.strftime(Date::DATE_FORMATS[:iso]),
+      campaign.expire_at.strftime(Date::DATE_FORMATS[:iso]),
+      campaign.exchange_rate.nil? ? MoneyRails.default_bank.get_rate(campaign.unit_price_currency, Money.default_currency) : campaign.exchange_rate,
+      get_unit_price(campaign, :local).format, get_unit_price(campaign, :global).format,
+      get_budget(campaign, :local).format, get_budget(campaign, :global).format
+  ]
+  s = [ @head, @head, @head, @head, @head, @head, @head, nil, nil, @border, @border, @border, @border, @border, @border, @border]
+  sheet.add_row r, style: s
+
+  cell = Reports::Helpers::AdminFormula.new 3
+
+  cell.chart_from = cell.row
+
+  data.each do |d|
+    sheet.add_row [
+                      d.group_name,
+                      cell.sum_for_sub_items(:views, d.data.count),
+                      cell.sum_for_sub_items(:clicks, d.data.count),
+                      cell.ctr,
+                      cell.sum_for_sub_items(:spend, d.data.count),
+                      cell.ecpm,
+                      cell.ecpc
+                  ], style: [ nil, @number, @number, @percent, @money, @money, @money]
+
+    cell.current_row_to_sum_list
+
+    if d.data.any?
+      d.data.each do |sub|
+        cell.next
+        sheet.add_row [
+                          sub.date_formatted,
+                          sub.views,
+                          sub.clicks,
+                          cell.ctr,
+                          sub.spend,
+                          cell.ecpm,
+                          cell.ecpc
+                      ], style: [ @sub, @sub_number, @sub_number, @sub_percent, @sub_money, @sub_money, @sub_money]
+      end
+    end
+
+    cell.next
+  end
+
+  cell.chart_to = cell.row
+
+  sheet.add_row [
+                    t('views.campaign_details.fields.grand_total'),
+                    cell.sum_for_grand(:views),
+                    cell.sum_for_grand(:clicks),
+                    cell.ctr,
+                    cell.sum_for_grand(:spend),
+                    cell.ecpm,
+                    cell.ecpc
+                ], style: [ @head, @head_number, @head_number, @head_percent, @head_money, @head_money, @head_money]
+
+  cell.next
+
+  r = [
+      t('views.campaign_reports.workbook.fields.target'),
+      campaign.CPM? ? campaign.target : '',
+      campaign.CPC? ? campaign.target : '',
+      '', '', '', '', '', '',
+      t('views.campaign_details.fields.delivery_realized'),
+      t('views.campaign_details.fields.delivery_expected'),
+      t('views.campaign_details.fields.campaign_health'),
+      t('views.campaign_details.fields.daily_pacing')
+  ]
+  s = [ @title, @number, @number, nil, nil, nil, nil, nil, nil, @title_with_border, @title_with_border, @title_with_border, @title_with_border]
+  sheet.add_row r, style: s
+
+  cell.next
+
+  r = [
+      t('views.campaign_reports.workbook.fields.remaining'),
+      campaign.CPM? ? cell.minus_target(:views) : '',
+      campaign.CPC? ? cell.minus_target(:clicks) : '',
+      '', '', '', '', '', '',
+      number_to_percentage(campaign.delivery_realized_percent, precision: 2),
+      number_to_percentage(campaign.delivery_expected_percent, precision: 2),
+      number_to_percentage(campaign.health_percent, precision: 2),
+      number_with_delimiter(campaign.daily_pacing.round(3))
+  ]
+  s = [ @head, @head_number, @head_number, @head, @head, @head, @head, nil, nil, @border, @border, @border, @border]
+  sheet.add_row r, style: s
+
+  # Add hidden rows for create chart
+  cell.next
+  chart_area_start = cell.row
+
+  cell.chart_from = cell.row
+  data.each do |d|
+    sheet.add_row [ d.group_name, d.views, d.clicks], style: @blank
+    cell.next
+  end
+  cell.chart_to = cell.row
+
+  # Create chart
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Views', :start_at => "A#{chart_area_start}", :end_at => "H#{chart_area_start + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["B#{cell.chart_from}:B#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Clicks', :start_at => "H#{chart_area_start}", :end_at => "O#{chart_area_start + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["C#{cell.chart_from}:C#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+end

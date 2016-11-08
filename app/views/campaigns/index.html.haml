@@ -1,0 +1,122 @@
+.page-header
+  %h1
+    List campaigns
+    %small
+      %i.ace-icon.fa.fa-angle-double-right
+      overview
+%div{ng: {app: 'campaign.lists.app', controller: 'ListsController', init: "isAdmin = #{current_user.is_admin?}" }}
+  .widget-box.transparent
+    .widget-body
+      .widget-main
+        .grid-stats
+          .row.search-box-list
+            .col-xs-6
+              %div.search-box-content
+                .col-xs-12.text-left
+                  .row.search-box-title
+                    %h3 Search
+                  .row
+                    %hr
+                    .col-xs-6.text-left
+                      .row
+                        %label.label-input Name
+                        %br
+                        %input.input-search{ng: {model: 'query.name'}, placeholder: "Type something ..."}
+                      .row
+                        %label.label-input Campaign Type
+                        %br
+                        %ui-select{ng: {model: 'query.campaign_type'}, class: 'input-select2'}
+                          %ui-select-match{:placeholder => "Select ..."}
+                            %span{"ng-bind" => "$select.selected.name"}
+                          %ui-select-choices{:repeat => "item.id as item in (types) | filter: $select.search"}
+                            %span{"ng-bind" => "item.name"}
+                      - if current_user.is_admin?
+                        .row
+                          %label.label-input User Name
+                          %br
+                          %ui-select{ng: {model: 'query.campaign_user'}, class: 'input-select2'}
+                            %ui-select-match{:placeholder => "Select ..."}
+                              %span{"ng-bind" => "$select.selected.name"}
+                            %ui-select-choices{:repeat => "item.id as item in (users) | filter: $select.search"}
+                              %span{"ng-bind" => "item.name"}
+                    .col-xs-6.text-left
+                      .row
+                        %label.label-input Country
+                        %br
+                        %ui-select{ng: {model: 'query.campaign_country'}, class: 'input-select2'}
+                          %ui-select-match{:placeholder => "Select ..."}
+                            %span{"ng-bind" => "$select.selected.name"}
+                          %ui-select-choices{:repeat => "item.id as item in (countries) | filter: $select.search"}
+                            %span{"ng-bind" => "item.name"}
+                      .row
+                        %label.label-input Category
+                        %br
+                        %ui-select{ng: {model: 'query.category_id'}, class: 'input-select2'}
+                          %ui-select-match{:placeholder => "Select ..."}
+                            %span{"ng-bind" => "$select.selected.name"}
+                          %ui-select-choices{'group-by'=> "'parent_name'", :repeat => "item.id as item in (categories) | filter: $select.search"}
+                            %span{"ng-bind" => "item.name"}
+                  .row.submit-search-box
+                    %hr
+                    %button.btn.btn-primary{ng: {click: 'filterCampaign()'}} Search
+                    %button.btn.btn-default{ng: {click: 'reset()'}} Reset
+          .row
+            .col-xs-12
+              %table.table.table-bordered.table-hover.table-campaign{"st-table" => "rows", "st-pipe" => "refresh"}
+                %colgroup
+                  %col{:span => "1", :style => "width: 2%;"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1"}
+                  %col{:span => "1", :style => "width: 2%;"}
+                %thead
+                  %tr
+                    %th.list-title
+                    %th.list-title{"st-sort" => "name"} Name
+                    %th.list-title{"st-sort" => "user_name"} User name
+                    %th.list-title{"st-sort" => "start_time"} Active at
+                    %th.list-title{"st-sort" => "end_time"} Expire at
+                    %th.list-title{"st-sort" => "pricing_model"} Campaign type
+                    %th.list-title{"st-sort" => ""} Campaign health
+                    %th.list-title{"st-sort" => "created_at"} Created at
+                    %th.list-title.actions Actions
+                %tbody
+                  %tr{ng: {repeat: 'row in rows', click: 'onSelected()', class: 'getTemplate(row)'}, "st-select-row" => "row"}
+                    %td
+                      .pull-left.status
+                        %i.ace-icon.fa.fa-circle{ng: {class: 'getStatus(row)'}}
+                    %td 
+                      %a{"ng-href" => "/campaign_details/{{row.id}}"} {{row.name}}
+                    %td {{row.user_name}}
+                    %td {{row.start_time}}
+                    %td {{row.end_time}}
+                    %td {{row.pricing_model}}
+                    %td {{row.health}}
+                    %td {{row.created_at}}
+                    %td 
+                      .dropdown
+                        %button.btn-default.btn-white.dropdown-toggle{"data-toggle" => "dropdown", "aria-expanded" => "false"}
+                          %span.ace-icon.fa.fa-cog
+                        %ul.dropdown-menu
+                          %li
+                            %a{ng: {href: '/campaigns/{{row.id}}/clone/'}} Clone
+                          %li
+                            %a{ng: {href: '/campaigns/{{row.id}}/edit/'}} Edit
+                          %li{ng: {if: "row.status != 'terminated' && row.status != 'completed'"}}
+                            %a.cursor-pointer{ng: {click: 'terminateCampaign(row.id)'}} Terminate
+                          %li{ng: {if: "row.status == 'paused' || row.status == 'live'"}}
+                            %a.cursor-pointer{ng: {href: '', click: 'getAction(row)'}} {{getButtonLabel(row)}}
+                          %li
+                            %a.cursor-pointer{ng: {if: 'isAdmin', click: 'deleteCampaign(row.id)'}} Delete
+                          %li
+                            %a.cursor-pointer{ng: {if: 'isAdmin', click: 'repareData(row.id)'}} Update Data from MongoDB
+                          %li
+                            %a{ng: {if: 'isAdmin', href: '/campaigns/{{row.id}}/activities'}} History
+                %tfoot
+                  %tr.footer-pagination
+                    %td.text-center{:colspan => "9"}
+                      %div{"st-displayed-pages" => "5", "st-items-by-page" => "15", "st-pagination" => ""}

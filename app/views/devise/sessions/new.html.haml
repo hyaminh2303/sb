@@ -1,0 +1,29 @@
+#login-box.login-box.visible.widget-box.no-border
+  .widget-body
+    .widget-main
+
+      %h4.header.blue.lighter.bigger
+        -#%i.ace-icon.fa.fa-coffee.green
+        Sign In
+
+      .space-6
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group
+          %span.block.input-icon.input-icon-right
+            = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email'
+            = fa_icon :user, class: 'ace-icon'
+        .form-group
+          %span.block.input-icon.input-icon-right
+            = f.password_field :password, autocomplete: 'off', :class => 'form-control', :placeholder => 'Password'
+            = fa_icon :lock, class: 'ace-icon'
+        .space
+        .clearfix
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me, class: 'ace'
+            = f.label :remember_me, class: 'lbl'
+          = f.submit 'Sign in', :class => 'width-35 pull-right btn btn-sm btn-success'
+    / /.widget-main
+
+    .toolbar.clearfix
+      = render 'devise/shared/links'

@@ -1,0 +1,14 @@
+%a{href: 'javascript: void(0);'}= activity.owner ? activity.owner.name : User::USER_BIDOPTIMIZATION
+changed campaign's date:
+%br
+- if activity.parameters[:old_start_time]
+    Start date:
+    %strong= local_time(activity.parameters[:old_start_time].to_datetime, '%B %e, %Y')
+    to
+    %strong= local_time(activity.parameters[:new_start_time].to_datetime, '%B %e, %Y')
+%br
+- if activity.parameters[:old_end_time]
+    End date:
+    %strong= local_time(activity.parameters[:old_end_time].to_datetime, '%B %e, %Y')
+    to
+    %strong= local_time(activity.parameters[:new_end_time].to_datetime, '%B %e, %Y')

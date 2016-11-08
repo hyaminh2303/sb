@@ -1,0 +1,392 @@
+id,category_code,name,parent_id
+1,IAB1,Arts & Entertainment,NULL
+2,IAB1-1,Books & Literature,1
+3,IAB1-2,Celebrity Fan/Gossip,1
+4,IAB1-3,Fine Art,1
+5,IAB1-4,Humor,1
+6,IAB1-5,Movies,1
+7,IAB1-6,Music,1
+8,IAB1-7,Television,1
+9,IAB2,Automotive,NULL
+10,IAB2-1,Auto Parts,9
+11,IAB2-2,Auto Repair,9
+12,IAB2-3,Buying/Selling Cars,9
+13,IAB2-4,Car Culture,9
+14,IAB2-5,Certified Pre-Owned,9
+15,IAB2-6,Convertible,9
+16,IAB2-7,Coupe,9
+17,IAB2-8,Crossover,9
+18,IAB2-9,Diesel,9
+19,IAB2-10,Electric Vehicle,9
+20,IAB2-11,Hatchback,9
+21,IAB2-12,Hybrid,9
+22,IAB2-13,Luxury,9
+23,IAB2-14,MiniVan,9
+24,IAB2-15,Mororcycles,9
+25,IAB2-16,Off-Road Vehicles,9
+26,IAB2-17,Performance Vehicles,9
+27,IAB2-18,Pickup,9
+28,IAB2-19,Road-Side Assistance,9
+29,IAB2-20,Sedan,9
+30,IAB2-21,Trucks & Accessories,9
+31,IAB2-22,Vintage Cars,9
+32,IAB2-23,Wagon,9
+33,IAB3,Business,NULL
+34,IAB3-1,Advertising,33
+35,IAB3-2,Agriculture,33
+36,IAB3-3,Biotech/Biomedical,33
+37,IAB3-4,Business Software,33
+38,IAB3-5,Construction,33
+39,IAB3-6,Forestry,33
+40,IAB3-7,Government,33
+41,IAB3-8,Green Solutions,33
+42,IAB3-9,Human Resources,33
+43,IAB3-10,Logistics,33
+44,IAB3-11,Marketing,33
+45,IAB3-12,Metals,33
+46,IAB4,Careers,NULL
+47,IAB4-1,Career Planning,46
+48,IAB4-2,College,46
+49,IAB4-3,Financial Aid,46
+50,IAB4-4,Job Fairs,46
+51,IAB4-5,Job Search,46
+52,IAB4-6,Resume Writing/Advice,46
+53,IAB4-7,Nursing,46
+54,IAB4-8,Scholarships,46
+55,IAB4-9,Telecommuting,46
+56,IAB4-10,U.S. Military,46
+57,IAB4-11,Career Advice,46
+58,IAB5,Education,NULL
+59,IAB5-1,Education,58
+60,IAB5-2,Adult Education,58
+61,IAB5-3,Art History,58
+62,IAB5-4,College Administration,58
+63,IAB5-5,College Life,58
+64,IAB5-6,Distance Learning,58
+65,IAB5-7,English as a 2nd Language,58
+66,IAB5-8,Language Learning,58
+67,IAB5-9,Graduate School,58
+68,IAB5-10,Homeschooling,58
+69,IAB5-11,Homework/Study Tips,58
+70,IAB5-12,K-6 Educators,58
+71,IAB5-13,Private School,58
+72,IAB5-14,Special Education,58
+73,IAB5-15,Studying Business,58
+74,IAB6,Family & Parenting,NULL
+75,IAB6-1,Adoption,74
+76,IAB6-2,Babies & Toddlers,74
+77,IAB6-3,Daycare/Pre School,74
+78,IAB6-4,Family Internet,74
+79,IAB6-5,Parenting - K-6 Kids,74
+80,IAB6-6,Parenting teens,74
+81,IAB6-7,Pregnancy,74
+82,IAB6-8,Special Education,74
+84,IAB7,Health & Fitness,NULL
+85,IAB7-1,Exercise,84
+86,IAB7-2,A.D.D.,84
+87,IAB7-3,AIDS/HIV,84
+88,IAB7-4,Allergies,84
+89,IAB7-5,Alternative Medicine,84
+90,IAB7-6,Arthritis,84
+91,IAB7-7,Asthma,84
+92,IAB7-8,Autism/PDD,84
+93,IAB7-9,Bipolar Disorder,84
+94,IAB7-10,Brain Tumor,84
+95,IAB7-11,Cancer,84
+96,IAB7-12,Cholesterol,84
+97,IAB7-13,Chronic Fatigue Syndrome,84
+98,IAB7-14,Chronic Pain,84
+99,IAB7-15,Cold & Flu,84
+100,IAB7-16,Deafness,84
+101,IAB7-17,Dental Care,84
+102,IAB7-18,Depression,84
+103,IAB7-19,Dermatology,84
+104,IAB7-20,Diabetes,84
+105,IAB7-21,Epilepsy,84
+106,IAB7-22,GERD/Acid Reflux,84
+107,IAB7-23,Headaches/Migraines,84
+108,IAB7-24,Heart Disease,84
+109,IAB7-25,Herbs for Health,84
+110,IAB7-26,Holistic Healing,84
+111,IAB7-27,IBS/Crohn's Disease,84
+112,IAB7-28,Incest/Abuse Support,84
+113,IAB7-29,Incontinence,84
+114,IAB7-30,Infertility,84
+115,IAB7-31,Men's Health,84
+116,IAB7-32,Nutrition,84
+117,IAB7-33,Orthopedics,84
+118,IAB7-34,Panic/Anxiety Disorders,84
+119,IAB7-35,Pediatrics,84
+120,IAB7-36,Physical Therapy,84
+121,IAB7-37,Psychology/Psychiatry,84
+122,IAB7-38,Senor Health,84
+123,IAB7-39,Sexuality,84
+124,IAB7-40,Sleep Disorders,84
+125,IAB7-41,Smoking Cessation,84
+126,IAB7-42,Substance Abuse,84
+127,IAB7-43,Thyroid Disease,84
+128,IAB7-44,Weight Loss,84
+129,IAB7-45,Women's Health,84
+130,IAB8,Food & Drink,NULL
+131,IAB8-1,American Cuisine,130
+132,IAB8-2,Barbecues & Grilling,130
+133,IAB8-3,Cajun/Creole,130
+134,IAB8-4,Chinese Cuisine,130
+135,IAB8-5,Cocktails/Beer,130
+136,IAB8-6,Coffee/Tea,130
+137,IAB8-7,Cuisine-Specific,130
+138,IAB8-8,Desserts & Baking,130
+139,IAB8-9,Dining Out,130
+140,IAB8-10,Food Allergies,130
+141,IAB8-11,French Cuisine,130
+142,IAB8-12,Health/Lowfat Cooking,130
+143,IAB8-13,Italian Cuisine,130
+144,IAB8-14,Japanese Cuisine,130
+145,IAB8-15,Mexican Cuisine,130
+146,IAB8-16,Vegan,130
+147,IAB8-17,Vegetarian,130
+148,IAB8-18,Wine,130
+149,IAB9,Hobbies & Interests,NULL
+150,IAB9-1,Art/Technology,149
+151,IAB9-2,Arts & Crafts,149
+152,IAB9-3,Beadwork,149
+153,IAB9-4,Birdwatching,149
+154,IAB9-5,Board Games/Puzzles,149
+155,IAB9-6,Candle & Soap Making,149
+156,IAB9-7,Card Games,149
+157,IAB9-8,Chess,149
+158,IAB9-9,Cigars,149
+159,IAB9-10,Collecting,149
+160,IAB9-11,Comic Books,149
+161,IAB9-12,Drawing/Sketching,149
+162,IAB9-13,Freelance Writing,149
+163,IAB9-14,Genealogy,149
+164,IAB9-15,Getting Published,149
+165,IAB9-16,Guitar,149
+166,IAB9-17,Home Recording,149
+167,IAB9-18,Investors & Patents,149
+168,IAB9-19,Jewelry Making,149
+169,IAB9-20,Magic & Illusion,149
+170,IAB9-21,Needlework,149
+171,IAB9-22,Painting,149
+172,IAB9-23,Photography,149
+173,IAB9-24,Radio,149
+174,IAB9-25,Roleplaying Games,149
+175,IAB9-26,Sci-Fi & Fantasy,149
+176,IAB9-27,Scrapbooking,149
+177,IAB9-28,Screenwriting,149
+178,IAB9-29,Stamps & Coins,149
+179,IAB9-30,Video & Computer Games,149
+180,IAB9-31,Woodworking,149
+181,IAB10,Home & Garden,NULL
+182,IAB10-1,Appliances,181
+183,IAB10-2,Entertaining,181
+184,IAB10-3,Environmental Safety,181
+185,IAB10-4,Gardening,181
+186,IAB10-5,Home Repair,181
+187,IAB10-6,Home Theater,181
+188,IAB10-7,Interior Decorating,181
+189,IAB10-8,Landscaping,181
+190,IAB10-9,Remodeling & Construction,181
+191,IAB11,Law Gov't & Politics,NULL
+192,IAB11-1,Immigration,191
+193,IAB11-2,Legal Issues,191
+194,IAB11-3,U.S. Government Resources,191
+195,IAB11-4,Politics,191
+196,IAB11-5,Commentary,191
+197,IAB12,News,NULL
+198,IAB12-1,International News,197
+199,IAB12-2,National News,197
+200,IAB12-3,Local News,197
+201,IAB13,Personal Finance,NULL
+202,IAB13-1,Beginning Investing,201
+203,IAB13-2,Credit/Debt & Loans,201
+204,IAB13-3,Financial News,201
+205,IAB13-4,Financial Planning,201
+206,IAB13-5,Hedge Fund,201
+207,IAB13-6,Insurance,201
+208,IAB13-7,Investing,201
+209,IAB13-8,Mutual Funds,201
+210,IAB13-9,Options,201
+211,IAB13-10,Retirement Planning,201
+212,IAB13-11,Stocks,201
+213,IAB13-12,Tax Planning,201
+214,IAB14,Society,NULL
+215,IAB14-1,Dating,214
+216,IAB14-2,Divorce Support,214
+217,IAB14-3,Gay Life,214
+218,IAB14-4,Marriage,214
+219,IAB14-5,Senior Living,214
+220,IAB14-6,Teens,214
+221,IAB14-7,Weddings,214
+222,IAB14-8,Ethnic Specific,214
+223,IAB15,Science,NULL
+224,IAB15-1,Astrology,223
+225,IAB15-2,Biology,223
+226,IAB15-3,Chemistry,223
+227,IAB15-4,Geology,223
+228,IAB15-5,Paranormal Phenomena,223
+229,IAB15-6,Physics,223
+230,IAB15-7,Space/Astronomy,223
+231,IAB15-8,Geography,223
+232,IAB15-9,Botany,223
+233,IAB15-10,Weather,223
+234,IAB16,Pets,NULL
+235,IAB16-1,Aquariums,234
+236,IAB16-2,Birds,234
+237,IAB16-3,Cats,234
+238,IAB16-4,Dogs,234
+239,IAB16-5,Large Animals,234
+240,IAB16-6,Reptiles,234
+241,IAB16-7,Veterinary Medicine,234
+242,IAB17,Sports,NULL
+243,IAB17-1,Auto Racing,242
+244,IAB17-2,Baseball,242
+245,IAB17-3,Bicycling,242
+246,IAB17-4,Bodybuilding,242
+247,IAB17-5,Boxing,242
+248,IAB17-6,Canoeing/Kayaking,242
+249,IAB17-7,Cheerleading,242
+250,IAB17-8,Climbing,242
+251,IAB17-9,Cricket,242
+252,IAB17-10,Figure Skating,242
+253,IAB17-11,Fly Fishing,242
+254,IAB17-12,Football,242
+255,IAB17-13,Freshwater Fishing,242
+256,IAB17-14,Game & Fish,242
+257,IAB17-15,Golf,242
+258,IAB17-16,Horse Racing,242
+259,IAB17-17,Horses,242
+260,IAB17-18,Hunting/Shooting,242
+261,IAB17-19,Inline Skating,242
+262,IAB17-20,Martial Arts,242
+263,IAB17-21,Mountain Biking,242
+264,IAB17-22,NASCAR Racing,242
+265,IAB17-23,Olympics,242
+266,IAB17-24,Paintball,242
+267,IAB17-25,Power & Motorcycles,242
+268,IAB17-26,Pro Basketball,242
+269,IAB17-27,Pro Ice Hockey,242
+270,IAB17-28,Rodeo,242
+271,IAB17-29,Rugby,242
+272,IAB17-30,Running/Jogging,242
+273,IAB17-31,Sailing,242
+274,IAB17-32,Saltwater Fishing,242
+275,IAB17-33,Scuba Diving,242
+276,IAB17-34,Skateboarding,242
+277,IAB17-35,Skiing,242
+278,IAB17-36,Snowboarding,242
+279,IAB17-37,Surfing/Bodyboarding,242
+280,IAB17-38,Swimming,242
+281,IAB17-39,Table Tennis/Ping-Pong,242
+282,IAB17-40,Tennis,242
+283,IAB17-41,Volleyball,242
+284,IAB17-42,Walking,242
+285,IAB17-43,Waterski/Wakeboard,242
+286,IAB17-44,World Soccer,242
+287,IAB18,Style & Fashion,NULL
+288,IAB18-1,Beauty,287
+289,IAB18-2,Body Art,287
+290,IAB18-3,Fashion,287
+291,IAB18-4,Jewelry,287
+292,IAB18-5,Clothing,287
+293,IAB18-6,Accessories,287
+294,IAB19,Technology & Computing,NULL
+295,IAB19-1,3-D Graphics,294
+296,IAB19-2,Animation,294
+297,IAB19-3,Antivirus Software,294
+298,IAB19-4,C/C++,294
+299,IAB19-5,Cameras & Camcorders,294
+300,IAB19-6,Cell Phones,294
+301,IAB19-7,Computer Certification,294
+302,IAB19-8,Computer Networking,294
+303,IAB19-9,Computer Peripherals,294
+304,IAB19-10,Computer Reviews,294
+305,IAB19-11,Data Centers,294
+306,IAB19-12,Databases,294
+307,IAB19-13,Desktop Publishing,294
+308,IAB19-14,Desktop Video,294
+309,IAB19-15,Email,294
+310,IAB19-16,Graphics Software,294
+311,IAB19-17,Home Video/DVD,294
+312,IAB19-18,Internet Technology,294
+313,IAB19-19,Java,294
+314,IAB19-20,JavaScript,294
+315,IAB19-21,Mac Support,294
+316,IAB19-22,MP3/MIDI,294
+317,IAB19-23,Net Conferencing,294
+318,IAB19-24,Net for Beginners,294
+319,IAB19-25,Network Security,294
+320,IAB19-26,Palmtops/PDAs,294
+321,IAB19-27,PC Support,294
+322,IAB19-28,Portable,294
+323,IAB19-29,Entertainment,294
+324,IAB19-30,Shareware/Freeware,294
+325,IAB19-31,Unix,294
+326,IAB19-32,Visual Basic,294
+327,IAB19-33,Web Clip Art,294
+328,IAB19-34,Web Design/HTML,294
+329,IAB19-35,Web Search,294
+330,IAB19-36,Windows,294
+331,IAB20,Travel,NULL
+332,IAB20-1,Adventure Travel,331
+333,IAB20-2,Africa,331
+334,IAB20-3,Air Travel,331
+335,IAB20-4,Australia & New Zealand,331
+336,IAB20-5,Bed & Breakfasts,331
+337,IAB20-6,Budget Travel,331
+338,IAB20-7,Business Travel,331
+339,IAB20-8,By US Locale,331
+340,IAB20-9,Camping,331
+341,IAB20-10,Canada,331
+342,IAB20-11,Caribbean,331
+343,IAB20-12,Cruises,331
+344,IAB20-13,Eastern Europe,331
+345,IAB20-14,Europe,331
+346,IAB20-15,France,331
+347,IAB20-16,Greece,331
+348,IAB20-17,Honeymoons/Getaways,331
+349,IAB20-18,Hotels,331
+350,IAB20-19,Italy,331
+351,IAB20-20,Japan,331
+352,IAB20-21,Mexico & Central America,331
+353,IAB20-22,National Parks,331
+354,IAB20-23,South America,331
+355,IAB20-24,Spas,331
+356,IAB20-25,Theme Parks,331
+357,IAB20-26,Traveling with Kids,331
+358,IAB20-27,United Kingdom,331
+359,IAB21,Real Estate,NULL
+360,IAB21-1,Apartments,359
+361,IAB21-2,Architects,359
+362,IAB21-3,Buying/Selling Homes,359
+363,IAB22,Shopping,NULL
+364,IAB22-1,Contests & Freebies,363
+365,IAB22-2,Couponing,363
+366,IAB22-3,Comparison,363
+367,IAB22-4,Engines,363
+368,IAB23,Religion & Spirituality,NULL
+369,IAB23-1,Alternative Religions,368
+370,IAB23-2,Atheism/Agnosticism,368
+371,IAB23-3,Buddhism,368
+372,IAB23-4,Catholicism,368
+373,IAB23-5,Christianity,368
+374,IAB23-6,Hinduism,368
+375,IAB23-7,Islam,368
+376,IAB23-8,Judaism,368
+377,IAB23-9,Latter-Day Saints,368
+378,IAB23-10,Pagan/Wiccan,368
+379,IAB24,Uncategorized,NULL
+380,IAB25,Non-Standard Content,NULL
+381,IAB25-1,Unmoderated UGC,380
+382,IAB25-2,Extreme Graphic/Explicit Violence,380
+383,IAB25-3,Pornography,380
+384,IAB25-4,Profane Content,380
+385,IAB25-5,Hate Content,380
+386,IAB25-6,Under Construction,380
+387,IAB25-7,Incentivized,380
+388,IAB26,Illegal Content,NULL
+389,IAB26-1,Illegal Content,388
+390,IAB26-2,Warez,388
+391,IAB26-3,Spyware/Malware,388
+392,IAB26-4,Copyright Infringement,388

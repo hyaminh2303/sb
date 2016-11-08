@@ -1,0 +1,28 @@
+%table.table.table-bordered.table-striped
+  %tbody
+    %tr
+      %td= t('views.campaign_details.fields.delivery_realized')
+      %td= number_to_percentage(model.delivery_realized_percent, precision: 2)
+    %tr
+      %td= t('views.campaign_details.fields.delivery_expected')
+      %td= number_to_percentage(model.delivery_expected_percent, precision: 2)
+    %tr
+      %td= t('views.campaign_details.fields.campaign_health')
+      %td= number_to_percentage(model.health_percent, precision: 2)
+    %tr
+      %td= t('views.campaign_details.fields.daily_pacing')
+      %td= number_with_delimiter model.daily_pacing.round(0)
+    %tr
+      %td
+        = t('views.campaign_details.fields.self_bidstalk_impressions')
+      %td= link_to "#{model.real_views} / #{model.dsp_views}", campaign_data_tracking_index_path(@campaign)
+    %tr
+      %td
+        = t('views.campaign_details.fields.impression_discrepancy')
+      %td= link_to number_to_percentage(model.discrepancy_views, precision: 2), campaigns_data_tracking_path()
+    %tr
+      %td= t('views.campaign_details.fields.self_bidstalk_clicks')
+      %td= "#{model.real_clicks} / #{model.dsp_clicks}"
+    %tr
+      %td= t('views.campaign_details.fields.click_discrepancy')
+      %td= link_to number_to_percentage(model.discrepancy_clicks, precision: 2), campaigns_data_tracking_path()

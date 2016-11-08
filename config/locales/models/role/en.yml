@@ -1,0 +1,6 @@
+en:
+  models:
+    role:
+      fields:
+        name: 'Name'
+      name: "Role"

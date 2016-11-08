@@ -1,0 +1,2 @@
+%div{ng: {app:'new.user.app', init: "user.id = #{params[:id]}; isAdmin=#{current_user.is_admin?}", controller: 'newUserController as newUserCtrl'}}
+  = render partial: 'form'

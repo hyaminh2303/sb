@@ -1,0 +1,2 @@
+module Reports::Helpers
+end

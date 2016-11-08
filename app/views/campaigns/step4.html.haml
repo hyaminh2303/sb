@@ -1,0 +1,107 @@
+%form{name: 'step4Form'}
+  .row
+    .col-xs-12.col-sm-7.col-sm-offset-2{ng: {show: 'viewState.errorMessages'}}
+      .alert.alert-danger
+        %ul
+          %li{ng: {repeat: 'message in viewState.errorMessages'}}
+            %strong
+              {{message}}
+    .col-xs-12.col-sm-12
+      %hr{ng: {show: 'viewState.errorMessages'}}
+  .row
+    .target-group.clearfix{ng: {show: 'campaign.targetCity'}}
+      .col-md-10.col-md-offset-1
+        .target-title
+          City targeting 
+      .col-md-8.col-md-offset-1
+        %div
+          .form-horizontal
+            .form-group
+              %label.col-sm-3.control-label Cities
+              .col-sm-2
+              .col-sm-4
+                %div{ng:{if: 'campaign.isDraft || campaign.cityIds.length != 0'}}
+                  %ui-select{ng: {model: 'campaign.cityIds', disabled: '!campaign.isDraft'}, multiple: ''}
+                    %ui-select-match{placeholder: t('campaigns.new.cities_placeholder'), 'ui-select-required' => 'campaign.targetCity'}
+                      {{$item.name}}
+                    %ui-select-choices{:repeat => 'c.id as c in cities | filter: $select.search'}
+                      {{c.name}}
+                %div{ng:{if: '!campaign.isDraft && campaign.cityIds.length == 0'}}
+                  %input.form-control{type: "text", ng: { model: "campaign.cityIds", disabled: 'true' }, placeholder: 'All'}
+              .col-sm-3
+                %div{ng:{if: 'campaign.isDraft || campaign.cityIds.length != 0', disabled: '!campaign.isDraft'}} 
+                  .row
+                    %label.col-sm-4.control-label Radius: 
+                    .input-group
+                      %input#form-field-mask-3.form-control.input-mask-product{type: "number", ng: { model: "campaign.citiesRadius" }, placeholder: 'Radius'}
+                      %span.input-group-addon
+                        Km
+
+    .target-group.clearfix{ng: {show: 'campaign.targetCity'}}
+      .col-md-10.col-md-offset-1
+        .target-title
+          Re-targeting
+      .col-md-8.col-md-offset-1
+        %div
+          .form-horizontal
+            .form-group
+              %label.col-sm-3.control-label Past Campaigns
+              .col-sm-2{style: 'margin-top: 5px'}
+                %label.pull-right.inline
+                  %input#id-button-borders.ace.ace-switch.ace-switch-5{checked: "checked", type: "checkbox", ng: { model: 'togglePastCampaigns', change: 'refreshPastCampaign()'}}
+                  %span.lbl.middle
+              %div{ng: { if: 'togglePastCampaigns' }}
+                .col-sm-7
+                  %ui-select{ng: {model: 'campaign.targetCampaignIds'}, multiple: ''}
+                    %ui-select-match{placeholder: t('campaigns.new.campaigns_placeholder'), 'ui-select-required' => 'togglePastCampaigns'}
+                      {{$item.name}}
+                    %ui-select-choices{:repeat => 'c.id as c in campaigns | filter: $select.search'}
+                      {{c.name}}
+
+    .target-group.clearfix
+      .col-md-10.col-md-offset-1
+        .target-title
+          Others
+      .col-md-8.col-md-offset-1
+        .form-horizontal
+          .form-group
+            %label.col-sm-3.control-label Devices OS
+            .col-sm-2{style: 'margin-top: 5px'}
+              %label.pull-right.inline
+                %input#id-button-borders.ace.ace-switch.ace-switch-5{checked: "checked", type: "checkbox", ng: { model: 'toggleDevicesOS', change: 'refreshDevicesOs()'}}
+                %span.lbl.middle
+            %div{ng: { if: 'toggleDevicesOS' }}
+              .col-sm-7
+                %ui-select{ng: {model: 'campaign.operatingSystemIds'}, multiple: ''}
+                  %ui-select-match{placeholder: t('campaigns.new.operating_system_placeholder')}
+                    {{$item.name}}
+                  %ui-select-choices{:repeat => 'c.id as c in operatingSystems | filter: $select.search'}
+                    {{c.name}}
+        %div{ng: {show: 'campaign.targetCity'}}
+          .form-horizontal
+            .form-group
+              %label.col-sm-3.control-label App Categories
+              .col-sm-2{style: 'margin-top: 5px'}
+                %label.pull-right.inline
+                  %input#id-button-borders.ace.ace-switch.ace-switch-5{checked: "checked", type: "checkbox", ng: { model: 'toggleAppCategory', change: 'refreshCategories()'}}
+                  %span.lbl.middle
+              %div{ng: { if: 'toggleAppCategory' }}
+                .col-sm-7
+                  %ui-select{ng: {model: 'campaign.categoryIds'}, multiple: ''}
+                    %ui-select-match{placeholder: t('campaigns.new.gender_placeholder')}
+                      {{$item.name}}
+                    %ui-select-choices{'group-by' => "'parentName'", :repeat => 'c.id as c in categories | filter: $select.search'}
+                      {{c.name}}
+            .form-group
+              %label.col-sm-3.control-label Gender
+              .col-sm-2{style: 'margin-top: 5px'}
+                %label.pull-right.inline
+                  %input#id-button-borders.ace.ace-switch.ace-switch-5{checked: "checked", type: "checkbox", ng: { model: 'toggleGender', change: 'refreshGenders()'}}
+                  %span.lbl.middle
+              %div{ng: { if: 'toggleGender' }}
+                .col-sm-7
+                  %ui-select{ng: {model: 'campaign.genderIds'}, multiple: ''}
+                    %ui-select-match{placeholder: t('campaigns.new.gender_placeholder')}
+                      {{$item.name}}
+                    %ui-select-choices{:repeat => 'c.id as c in genders | filter: $select.search'}
+                      {{c.name}}

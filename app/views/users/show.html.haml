@@ -1,0 +1,28 @@
+%center{ng: {app:'user.app'}}
+  #show-user-box.show-user-box.visible.widget-box.no-border
+    .widget-body
+      .widget-main
+
+        %h4.header.green.lighter.bigger
+          %i.ace-icon.fa.fa-users.blue
+          User Infomation
+        %div{ui: {view: ''}, ng: {init: "viewState.userId=#{@user.id}; isDisable=#{@user.approved}"}}
+          .form-group
+            %span.block.input-icon.input-icon-right
+              = text_field_tag :email, @user.email, :class => 'form-control', disabled: true, 'ng-model' => 'user_email'  
+              = fa_icon :envelope, class: 'ace-icon'
+          .form-group
+            %span.block.input-icon.input-icon-right
+              = text_field_tag :name, @user.name, :class => 'form-control', disabled: true, 'ng-model' => 'user_name'
+              = fa_icon :user, class: 'ace-icon'
+          .form-group
+            %span.block.input-icon.input-icon-right
+              = text_field_tag :company, @user.company, :class => 'form-control', disabled: true, 'ng-model' => 'user_company'
+              = fa_icon :building, class: 'ace-icon'
+          .space-24
+          .clearfix
+            - if can?(:manage, @user) && @user.id != current_user.id
+              %button{type: 'button', class: 'width-65 pull-left btn btn-sm btn-success .btn-approve', id: 'btn-approve', 'ng-click' => 'userCtrl.approveUser()'} Approve
+              %button{type: 'button', class: 'width-30 pull-right btn btn-sm', 'ng-click' => 'userCtrl.rejectUser()', id: 'btn-reject'} Reject
+            - else
+              %a{ href: edit_user_path(current_user), class: 'width-65 pull-right btn btn-sm btn-success .btn-update', id: 'btn-update'} Update account

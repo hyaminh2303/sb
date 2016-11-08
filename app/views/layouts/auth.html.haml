@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      = Setting.site_title
+    = favicon_link_tag 'YOOSEfavicon.ico'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body.login-layout.light-login.skin-yoose
+    - if notice || alert
+      .container{:style => "margin-top: 20px"}
+        - if notice
+          .alert.alert-success.alert-dismissable
+            %i.fa.fa-check
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+            = notice
+        - if alert
+          .alert.alert-danger.alert-dismissable
+            %i.fa.fa-ban
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+            = alert
+
+    .main-container
+      .main-content
+        .row
+          .col-sm-10.col-sm-offset-1
+            .login-container
+
+              .center
+                = image_tag "geopoint-logo.png", :class => "login-logo"
+
+              .space-6
+
+              .position-relative
+                = yield

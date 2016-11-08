@@ -1,0 +1,13 @@
+en:
+  views:
+    currencies:
+      index:
+        title: "Currencies"
+        table_header: "Listing Currency"
+        unknown_rate: "N/A"
+      show:
+        title: "Details"
+      new:
+        title: "New"
+      edit:
+        title: "Edit"

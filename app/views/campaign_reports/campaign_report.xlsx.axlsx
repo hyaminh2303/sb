@@ -1,0 +1,53 @@
+wb = xlsx_package.workbook
+
+# define style
+styles = wb.styles
+
+sub_bg_color = 'D9D9D9'
+format_number = '#,##0'
+format_money_usd = '[$$-409]#,##0.00;[RED]-[$$-409]#,##0.00'
+format_percent = '0.00%'
+
+@title = styles.add_style b: true, bg_color: 'FF0000', fg_color: 'FF', :alignment => { :horizontal => :center }
+@blank = styles.add_style fg_color: 'FF'
+@title_with_border = styles.add_style b: true, bg_color: 'FF0000', fg_color: 'FF', :alignment => { :horizontal => :center }, :border => Axlsx::STYLE_THIN_BORDER
+@center = styles.add_style :alignment => { :horizontal => :center }
+
+@border = styles.add_style border: Axlsx::STYLE_THIN_BORDER, :alignment => { :horizontal => :center }
+@border_money = styles.add_style border: Axlsx::STYLE_THIN_BORDER, format_code: format_money_usd, :alignment => { :horizontal => :center }
+
+@number = styles.add_style format_code: format_number
+@money = styles.add_style format_code: format_money_usd
+@percent = styles.add_style format_code: format_percent
+
+@head = styles.add_style :b => true, :bg_color => "00", :fg_color => "FF"
+@head_number = styles.add_style :b => true, :bg_color => "00", :fg_color => "FF", :format_code => format_number
+@head_money = styles.add_style :b => true, :bg_color => "00", :fg_color => "FF", :format_code => format_money_usd
+@head_percent = styles.add_style :b => true, :bg_color => "00", :fg_color => "FF", :format_code => format_percent
+
+@sub = styles.add_style bg_color: sub_bg_color
+@sub_number = styles.add_style bg_color: sub_bg_color, format_code: format_number
+@sub_money = styles.add_style bg_color: sub_bg_color, format_code: format_money_usd
+@sub_percent = styles.add_style bg_color: sub_bg_color, format_code: format_percent
+
+render partial: daily_report.template_name, locals: { wb: wb, campaign: daily_report.campaign, data: daily_report.data, total: daily_report.total}
+if location_report.length > 0
+  render partial: location_report.template_name, locals: { wb: wb, campaign: location_report.campaign, data: location_report.data, total: location_report.total}
+end
+if os_report.length > 0
+  render partial: os_report.template_name, locals: { wb: wb, campaign: os_report.campaign, data: os_report.data, total: os_report.total}
+end
+if creative_report.length > 0
+  render partial: creative_report.template_name, locals: { wb: wb, campaign: creative_report.campaign, data: creative_report.data, total: creative_report.total}
+end
+if device_report.present? && device_report.length > 0
+  render partial: device_report.template_name, locals: { wb: wb, campaign: device_report.campaign, data: device_report.data, total: device_report.total}
+end
+if carrier_report.length > 0
+  render partial: carrier_report.template_name, locals: { wb: wb, campaign: carrier_report.campaign, data: carrier_report.data, total: carrier_report.total}
+end
+#if app_report.length > 0
+#  render partial: app_report.template_name, locals: { wb: wb, campaign: app_report.campaign, data: app_report.data, total: app_report.total}
+#end
+
+

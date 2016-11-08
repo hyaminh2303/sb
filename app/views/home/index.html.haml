@@ -1,0 +1,76 @@
+.page-header
+  %h1
+    Dashboard
+    %small
+      %i.ace-icon.fa.fa-angle-double-right
+      overview &amp; stats
+%div{ng: {app: 'stats.app', init: "user.isAdmin = #{current_user.is_admin?}; search=#{session[:search_by_company].presence || 'all'}"}}
+  .widget-box.transparent
+    .widget-body{ng: {controller: 'StatsController as statsCtr'}}
+      .widget-main
+        .row
+          .col-sm-4
+            %ui-select{ng: {model: 'campaignFilter.period'}, theme: 'bootstrap', on: {select: 'statsCtr.filterByPeriodPreset($item, $model)'}}
+              %ui-select-match{placeholder: 'Select the period'}
+                {{$select.selected.text}}
+              %ui-select-choices{repeat: 'period in statsCtr.FILTER_PERIODS | filter: $select.search'}
+                %ui_select_choice{ng: {bind: {html: 'period.text | highlight: $select.search'}}}
+          .col-sm-4
+            %p.input-group
+              %input.form-control{'close-text' => 'Close', 'datepicker-popup' => '{{statsCtr.dateFormat}}', 'is-open' => 'statsCtr.datepickers.startDate.opened', ng: {model: 'dateFilterOptions.startDate', required: 'true', disabled: 'campaignFilter.period.value.length > 0'},:type => 'text'}/
+              %span.input-group-btn
+                %button.btn.btn-white{ng: {click: "statsCtr.openDatePopup($event, 'startDate')", disabled: 'campaignFilter.period.value.length > 0'}, :type => 'button'}
+                  %i.fa.fa-calendar
+          .col-sm-4
+            %p.input-group
+              %input.form-control{'close-text' => 'Close', 'datepicker-popup' => '{{statsCtr.dateFormat}}', "is-open" => "statsCtr.datepickers.endDate.opened", ng: {model: 'dateFilterOptions.endDate', required: 'true', disabled: 'campaignFilter.period.value.length > 0'}, :type => 'text'}/
+              %span.input-group-btn
+                %button.btn.btn-white{ng: {click: "statsCtr.openDatePopup($event, 'endDate')", disabled: 'campaignFilter.period.value.length > 0'}, :type => 'button'}
+                  %i.fa.fa-calendar
+        .row{ng: {controller: 'StatsChartController as chartCtr'}}
+          .col-xs-12
+            .alert.alert-warning.watermark.watermark-chart{ng: {show: 'isEmptyChart'}} There is no tracking data in the selected period
+            %highchart{config: 'chartOptions'}
+            .widget-box-overlay{ng: {show: 'isLoading'}}
+              %i.ace-icon.loading-icon.fa.fa-spinner.fa-spin.fa-5x.white
+        .row.stats-buttons
+          .col-xs-12
+            .btn-group.btn-group-justified{data: {toggle: :buttons}}
+              .btn.btn-white.btn_stat_views.active{ ng: { class: "{active: statsType=='views', disabled: totalCampaigns==0}", click: "statsCtr.loadStatsChart('views')"}}
+                %input#views_stats{type: 'radio', name: 'options', autocomplete: 'off'}
+                %i.ion.ion-stats-bars.pull-left
+                .stats-content.pull-left
+                  Views
+                  %p{ng: { bind: 'views' }}
+              .btn.btn-white.btn_stat_clicks{ ng: { class: "{active: statsType=='clicks', disabled: totalCampaigns==0}", click: "statsCtr.loadStatsChart('clicks')" }}
+                %input#clicks_stats{type: 'radio', name: 'options', autocomplete: 'off'}
+                %i.ion.ion-stats-bars.pull-left
+                .stats-content.pull-left
+                  Clicks
+                  %p{ng: { bind: 'clicks' }}
+              .btn.btn-white.btn_stat_budget_spent{ ng: { class: "{active: statsType=='budget_spent', disabled: totalCampaigns==0}", click: "statsCtr.loadStatsChart('budget_spent')" }}
+                %input#budget_spent_stats{type: 'radio', name: 'options', autocomplete: 'off'}
+                %i.ion.ion-stats-bars.pull-left
+                .stats-content.pull-left
+                  Budget Spent
+                  %p{ng: { bind: 'budget' }}
+
+        .grid-stats{ng: {controller: 'CampaignStatsController as gridCtr'}}
+          .row
+            .col-xs-12.text-right
+              .form-group.filter-by-name
+                %strong Search by Name
+                %input{ng: {model: 'filterName', change: 'gridCtr.filterByName()'}}
+                - if current_user.has_role? :admin
+                  %strong Search by Company
+                  %select{ng: {model: 'filterCompany', change: 'gridCtr.filterByCompany()', options: "c for c in companies"}}
+                    %option{:value => ""} ALL
+          .row
+            .col-xs-12
+              .grid{ui: {grid:'gridOptions', 'grid-pagination' => '', 'grid-selection' => ''}}
+                .watermark.watermark-grid{ng: {show: '!gridOptions.data.length'}} No data available
+              .widget-box-overlay{ng: {show: 'isLoading'}}
+                %i.ace-icon.loading-icon.fa.fa-spinner.fa-spin.fa-5x.white
+      / /.widget-main
+    / /.widget-body
+  / /.widget-box

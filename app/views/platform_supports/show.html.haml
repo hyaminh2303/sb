@@ -1,0 +1,12 @@
+.platform-support
+  = raw @platform_support.content if @platform_support.present?
+
+- if current_user.is_admin?
+  - if @platform_support.blank?
+    = link_to new_platform_support_path, class: 'btn btn-primary' do
+      %i.fa.fa-plus
+      New Platform support
+  - else
+    = link_to edit_platform_supports_path, class: 'btn btn-primary' do
+      %i.fa.fa-edit
+      Edit Platform support

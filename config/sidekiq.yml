@@ -1,0 +1,7 @@
+:logfile: ./log/sidekiq.log
+:pidfile: tmp/pids/sidekiq.pid
+:concurrency: 10
+
+
+production:
+  :concurrency: 25

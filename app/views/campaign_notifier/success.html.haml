@@ -1,0 +1,39 @@
+%p
+  Hi Ops,
+- if @edit
+  %p= "Campaign (#{@campaign.name}) has been updated by #{@user.name} at #{@campaign.updated_at.strftime('%H:%M %p')} on #{@campaign.updated_at.strftime('%d/%m/%y')}."
+- else
+  %p= "A new campaign (#{@campaign.name}) has been created by #{@user.name} on the platform." 
+%p
+  = "Name: #{@campaign.name}"
+  %br
+  - if @previous_changes && ((@previous_changes[:start_time] && date_change?(@previous_changes[:start_time][0], @previous_changes[:start_time][1])) || (@previous_changes[:end_time] && date_change?(@previous_changes[:end_time][0], @previous_changes[:end_time][1])))
+    %strong
+      = "Duration: #{@campaign.start_time.strftime('%d/%m/%Y')}"
+      = @previous_changes[:start_time] && date_change?(@previous_changes[:start_time][0], @previous_changes[:start_time][1]) ? "(old: #{@previous_changes[:start_time][0].strftime('%d/%m/%Y')})" : ''
+      = " to #{@campaign.end_time.strftime('%d/%m/%Y')}"
+      = @previous_changes[:end_time] && date_change?(@previous_changes[:end_time][0], @previous_changes[:end_time][1]) ? "(old: #{@previous_changes[:end_time][0].strftime('%d/%m/%Y')})" : ''
+  - else
+    = "Duration: #{@campaign.start_time.strftime('%d/%m/%Y')}"
+    = " to #{@campaign.end_time.strftime('%d/%m/%Y')}"
+
+  %br
+  = "Country: #{@campaign.country.name}"
+  %br
+  - if @previous_changes && @previous_changes[:budget_cents]
+    %strong
+      = "Budget: #{humanized_money(@butget)} "
+      = @previous_changes[:budget_cents] ? "(old: #{@previous_changes[:budget_cents][0].to_f/100.0}) " : ''
+      = @campaign.budget_currency
+  - else
+    = "Budget: #{humanized_money(@butget)} #{@campaign.budget_currency}"
+  %br
+  = "# of banners: #{@campaign.banners.size}"
+  %br
+  = "# of locations: #{@campaign.campaign_locations.size}"
+  %br
+  = "Daily pacing: #{@campaign.target}/#{((@campaign.end_time-@campaign.start_time)/1.day).round + 1} (target impressions or clicks / # of days)"
+%p
+  Best Regards,
+  %br
+  YOOSE

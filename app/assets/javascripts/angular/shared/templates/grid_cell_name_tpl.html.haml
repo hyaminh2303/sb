@@ -1,0 +1,4 @@
+.pull-left
+  %div
+    %a{ng: {href: "/campaign_details/{{ row.entity['id'] }}"}} {{ row.entity[col.field] }}
+  %small{ng: {if: "row.entity['id'] > 0"}, "tooltip" => "Start - End Date", "tooltip-placement" => "right"} {{ row.entity['startTime'] }} - {{ row.entity['endTime'] }}

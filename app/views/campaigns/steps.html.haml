@@ -1,0 +1,27 @@
+%div
+  %div
+    %ul.steps
+      - (1..4).each do |i|
+        %li{ng: {class: "stepsCtrl.isActive(#{i})"}}
+          %span.step= i
+          %span.title
+            =t("campaigns.new.step#{i}")
+    %hr
+    .step-content
+      .step-pane.active
+        %div{ui: {view: ''}}
+  %hr.no-margin-top
+  .row
+    .col-sm-6.text-left
+      %button.btn.btn-primary{ng:{click: 'stepsCtrl.cancelCampaign()', show: 'campaign.isDraft'}, type: 'button'}
+        %i.ace-icon.fa.fa-times
+        = t('campaigns.new.wizard_actions_cancel')
+    .col-sm-6.text-right
+      %button.btn.btn-primary.btn-prev{ng:{click: 'stepsCtrl.prev()', disabled: 'viewState.step == 1'}, type: 'button'}
+        %i.ace-icon.fa.fa-arrow-left
+        = t('campaigns.new.wizard_actions_prev')
+      %button.btn.btn-primary.btn-next{ng: {hide: "viewState.step == 4 && (campaign.status == 'terminated' || campaign.status == 'completed')", click: 'stepsCtrl.next()', disabled: '!viewState.isValid()'}, type: 'button'}
+        {{viewState.case}}
+        %i.ace-icon.fa.fa-arrow-right.icon-on-right
+
+

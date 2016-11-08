@@ -1,0 +1,7 @@
+.widget-box
+  .widget-header.widget-header-blue.widget-header-flat
+    %h2.lighter.grey Edit Campaign
+  .widget-body
+    .widget-main
+      %div{ng: {app:'campaign.edit.app'}, 'block-ui' => "main"}
+        %div{ui: {view: ''}, ng:{ init: "viewState={isAdmin: #{current_user.is_admin?}, campaignId: #{@campaign.id}}; remainingBudget=#{current_user.budget}"}}

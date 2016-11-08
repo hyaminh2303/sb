@@ -1,0 +1,101 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      = Setting.site_title
+    = favicon_link_tag 'YOOSEfavicon.ico'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'i18n'
+    = javascript_include_tag 'translations'
+    = javascript_include_tag 'application', "app/#{controller_name}"
+    = csrf_meta_tags
+  %body.skin-yoose
+    .navbar.navbar-default.h-navbar
+      #navbar-container.navbar-container
+        .pull-right{:role => "navigation"}
+          %ul.nav.ace-nav
+            / #section:basics/navbar.user_menu
+            %li{:id => 'budgetRemaining'}= "Budget: $#{current_user.budget}"
+        / #section:basics/navbar.dropdown
+        .pull-right{:role => "navigation"}
+          %ul.nav.ace-nav
+            / #section:basics/navbar.user_menu
+            %li
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = current_user.name
+                %i.ace-icon.fa.fa-caret-down
+              %ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-inverse.dropdown-caret.dropdown-close
+                %li
+                  = link_to fa_icon(:user, text: t('views.navigation.my_account')), edit_profile_path(current_user)
+                %li
+                  = link_to fa_icon(:user, text: t('devise.registrations.change_password')), edit_user_registration_path
+                %li.divider
+                %li
+                  = link_to fa_icon('power-off', text: t('devise.sessions.sign_out')), destroy_user_session_path, :method => 'delete'
+            / /section:basics/navbar.user_menu
+        / /section:basics/navbar.dropdown
+
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.pull-left.navbar-toggle.collapsed{"data-target" => "#menubar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle sidebar
+            %i.ace-icon.fa.fa-dashboard.white.bigger-125
+          %button.pull-left.navbar-toggle.collapsed{"data-target" => "#sidebar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle menubar
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          / Header logo
+          = link_to '', root_path, :class => 'navbar-brand logo'
+          -#%a.navbar-brand{:href => "#"}
+          -#  %small
+          -#    %i.fa.fa-leaf
+          -#    = SbSetting.site_title
+        / Collect the nav links, forms, and other content for toggling
+        -#%nav#menubar.navbar-menu.pull-left.collapse.navbar-collapse{:role => "navigation"}
+        #menubar.collapse.navbar-collapse
+          = render_navigation context: :top, expand_all: true, renderer: :bootstrap
+
+    #main-container.main-container
+
+      #sidebar.sidebar.collapse.navbar-collapse.menu-min{"data-sidebar" => "true", "data-sidebar-hover" => "true", "data-sidebar-scroll" => "true"}
+        :javascript
+          try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        = render_navigation expand_all: true, renderer: :ace
+        / /.nav-list
+        / #section:basics/sidebar.layout.minimize
+        #sidebar-collapse.sidebar-toggle.sidebar-collapse
+          %i.ace-icon.fa.fa-angle-double-right{"data-icon1" => "ace-icon fa fa-angle-double-left", "data-icon2" => "ace-icon fa fa-angle-double-right"}
+        / /section:basics/sidebar.layout.minimize
+        :javascript
+          try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+      .main-content
+        %section.content-header
+          %h1
+            = yield :header
+            = breadcrumbs :style => :bootstrap
+        .main-content-inner
+          .page-content.main-content
+            - if notice
+              .alert.alert-success.alert-dismissable
+                %i.fa.fa-check
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                = notice
+            - if alert
+              .alert.alert-danger.alert-dismissable
+                %i.fa.fa-ban
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                = alert
+
+            = yield
+
+      .footer
+        .footer-inner
+          / #section:basics/footer
+          .footer-content
+            %span
+              Copyright © 2010-2015
+            %span.bold.red
+              YOOSE Pte. Ltd
+            %span='. All rights reserved.'

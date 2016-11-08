@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      = Setting.site_title
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'i18n'
+    = javascript_include_tag 'translations'
+    = javascript_include_tag 'application', 'app/maintenance'
+    = csrf_meta_tags
+  %body.skin-yoose
+    .navbar.navbar-default.h-navbar
+      #navbar-container.navbar-container
+        .navbar-header
+          = link_to '', root_path, :class => 'navbar-brand logo'
+
+    #main-container.main-container
+
+      .main-content
+        .main-content-inner
+          .page-content.main-content
+            - if notice
+              .alert.alert-success.alert-dismissable
+                %i.fa.fa-check
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                = notice
+            - if alert
+              .alert.alert-danger.alert-dismissable
+                %i.fa.fa-ban
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                = alert
+
+            = yield
+
+      .footer
+        .footer-inner
+          / #section:basics/footer
+          .footer-content
+            %span
+              Copyright © 2010-2015
+            %span.bold.red
+              YOOSE Pte. Ltd
+            %span='. All rights reserved.'

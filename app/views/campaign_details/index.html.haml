@@ -1,0 +1,75 @@
+- breadcrumb :campaigns_detail, @campaign
+%div{ng: {app:'campaign.detail.app'}}
+  .col.col-lg-4
+    .box.box-info
+      .box-body.dl-horizontal
+
+        -# LEFT TABLE
+        = render partial: 'campaign_details/forms/info', locals: { model: @campaign}
+        - if current_user.has_role? :admin
+          = render partial: 'campaign_details/forms/analysis_data', locals: { model: @campaign } 
+  .col.col-lg-8
+    .box.box-info
+      .box-body
+        = render partial: 'campaign_details/forms/action', locals: { campaign: @campaign, report: @report}
+        %div{ :role => "tabpanel"}
+
+          -# Nav Tabs
+          %ul#campaign-nav-tab.nav.nav-tabs
+            %li.active{:role => "presentation"}
+              %a{:href => "#group", :data => {toggle: 'tab'}} Date
+            - if @location_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#location", :data => {toggle: 'tab'}} Location
+            - if !@os_report.nil? && @os_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#os", :data => {toggle: 'tab'}} OS
+            - if !@creative_report.nil? && @creative_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#creatives", :data => {toggle: 'tab'}} Creatives
+            - if !@carrier_report.nil? && @carrier_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#carrier", :data => {toggle: 'tab'}} Carriers
+            - if !@device_report.nil? && @device_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#device_id", :data => {toggle: 'tab'}} Devices
+            - if current_user.is_admin? && !@exchange_report.nil? && @exchange_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#exchange", :data => {toggle: 'tab'}} Exchanges
+            - if current_user.is_admin? && !@app_report.nil? && @app_report.data.length > 0
+              %li{:role => "presentation"}
+                %a{:href => "#application", :data => {toggle: 'tab'}} Applications
+
+          -# Tab panes
+          .tab-content
+            #group.tab-pane.active{:role => "tabpanel"}
+              %div{ class: 'datatable-container', ng: { controller: can?(:manage, @campaign) ? 'AdminCampaignGroupStatsController' : 'UserCampaignGroupStatsController', init: "init(#{@campaign.id}, #{@group.nil? ? -1 : @group.id}, '#{Date::DATE_FORMATS[:default]}')"}}
+                = render partial: 'grid', locals: { campaign: @campaign, total: @report.total}
+            - if @location_report.data.length > 0
+              #location.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignLocationStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'location_grid', locals: { campaign: @campaign, total: @location_report.total}
+            - if !@os_report.nil? && @os_report.data.length > 0
+              #os.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignOsStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'os_grid', locals: { campaign: @campaign, total: @os_report.total}
+            - if !@creative_report.nil? && @creative_report.data.length > 0
+              #creatives.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignCreativeStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'creative_grid', locals: { campaign: @campaign, total: @creative_report.total}
+            - if !@carrier_report.nil? && @carrier_report.data.length > 0
+              #carrier.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignCarrierStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'carrier_grid', locals: { campaign: @campaign, total: @carrier_report.total}
+            - if !@device_report.nil? && @device_report.data.length > 0
+              #device_id.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignDeviceStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'device_grid', locals: { campaign: @campaign, total: @device_report.total}
+            - if current_user.is_admin? && !@exchange_report.nil? && @exchange_report.data.length > 0
+              #exchange.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'AdminCampaignExchangeStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'exchange_grid', locals: { campaign: @campaign, total: @exchange_report.total}
+            - if current_user.is_admin? && !@app_report.nil? && @app_report.data.length > 0
+              #application.tab-pane{:role => "tabpanel"}
+                %div{ class: 'datatable-container', ng: { controller: 'UserCampaignAppStatsController', init: "init(#{@campaign.id})"}}
+                  = render partial: 'app_grid', locals: { campaign: @campaign, total: @app_report.total}

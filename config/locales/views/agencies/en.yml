@@ -1,0 +1,12 @@
+en:
+  views:
+    agencies:
+      index:
+        title: "Agencies"
+        table_header: "Listing Agency"
+      show:
+        title: "Details"
+      new:
+        title: "New"
+      edit:
+        title: "Edit"

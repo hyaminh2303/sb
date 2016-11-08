@@ -1,0 +1,226 @@
+id,country_code,name
+4,AD,Andorra
+5,AE,United Arab Emirates
+6,AF,Afghanistan
+7,AG,Antigua And Barbuda
+8,AI,Anguilla
+9,AL,Albania
+10,AM,Armenia
+12,AO,Angola
+13,AQ,Antarctica
+14,AR,Argentina
+15,AS,American Samoa
+16,AT,Austria
+17,AU,Australia
+18,AW,Aruba
+19,AZ,Azerbaijan
+20,BA,Bosnia And Herzegovina
+21,BB,Barbados
+22,BD,Bangladesh
+23,BE,Belgium
+24,BF,Burkina Faso
+25,BG,Bulgaria
+26,BH,Bahrain
+27,BI,Burundi
+28,BJ,Benin
+29,BM,Bermuda
+30,BN,Brunei
+31,BO,Bolivia
+32,BR,Brazil
+33,BS,Bahamas
+34,BT,Bhutan
+35,BV,Bouvet Island
+36,BW,Botswana
+37,BY,Belarus
+38,BZ,Belize
+39,CA,Canada
+40,CC,Cocos (Keeling) Islands
+41,CD,Democratic Republic Of Congo (Zaire)
+42,CF,Central African Republic
+43,CG,Congo
+44,CH,Switzerland
+45,CI,Cote D'Ivorie (Ivory Coast)
+46,CK,Cook Islands
+47,CL,Chile
+48,CM,Cameroon
+49,CN,China
+50,CO,Colombia
+51,CR,Costa Rica
+52,CU,Cuba
+53,CV,Cape Verde
+54,CX,Christmas Island
+55,CY,Cyprus
+56,CZ,Czech Republic
+57,DE,Germany
+58,DJ,Djibouti
+59,DK,Denmark
+60,DM,Dominica
+61,DO,Dominican Republic
+62,DZ,Algeria
+63,EC,Ecuador
+64,EE,Estonia
+65,EG,Egypt
+67,ER,Eritrea
+68,ES,Spain
+69,ET,Ethiopia
+70,FI,Finland
+71,FJ,Fiji
+72,FK,Falkland Islands (Malvinas)
+73,FM,Micronesia
+74,FO,Faroe Islands
+75,FR,France
+76,GA,Gabon
+78,GD,Grenada
+79,GE,Georgia
+80,GF,French Guinea
+81,GH,Ghana
+82,GI,Gibraltar
+83,GL,Greenland
+84,GM,Gambia
+85,GN,Guinea
+86,GP,Guadeloupe
+87,GQ,Equatorial Guinea
+88,GR,Greece
+89,GS,South Georgia And South Sandwich Islands
+90,GT,Guatemala
+91,GU,Guam
+92,GW,Guinea-Bissau
+93,GY,Guyana
+94,HK,Hong Kong
+95,HM,Heard And McDonald Islands
+96,HN,Honduras
+97,HR,Croatia (Hrvatska)
+98,HT,Haiti
+99,HU,Hungary
+100,ID,Indonesia
+101,IE,Ireland
+102,IL,Israel
+103,IN,India
+104,IO,British Indian Ocean Territory
+105,IQ,Iraq
+106,IR,Iran
+107,IS,Iceland
+108,IT,Italy
+109,JM,Jamaica
+110,JO,Jordan
+111,JP,Japan
+112,KE,Kenya
+113,KG,Kyrgyzstan
+114,KH,Cambodia
+115,KI,Kiribati
+116,KM,Comoros
+117,KN,Saint Kitts And Nevis
+118,KP,North Korea
+119,KR,South Korea
+120,KW,Kuwait
+121,KY,Cayman Islands
+122,KZ,Kazakhstan
+123,LA,Laos
+124,LB,Lebanon
+125,LC,Saint Lucia
+126,LI,Liechtenstein
+127,LK,Sri Lanka
+128,LR,Liberia
+129,LS,Lesotho
+130,LT,Lithuania
+131,LU,Luxembourg
+132,LV,Latvia
+133,LY,Libya
+134,MA,Morocco
+135,MC,Monaco
+136,MD,Moldova
+137,MG,Madagascar
+138,MH,Marshall Islands
+139,MK,Macedonia
+140,ML,Mali
+141,MM,Myanmar (Burma)
+142,MN,Mongolia
+143,MO,Macao
+144,MP,Northern Mariana Islands
+145,MQ,Martinique
+146,MR,Mauritania
+147,MS,Montserrat
+148,MT,Malta
+149,MU,Mauritius
+150,MV,Maldives
+151,MW,Malawi
+152,MX,Mexico
+153,MY,Malaysia
+154,MZ,Mozambique
+155,NA,Namibia
+156,NC,New Caledonia
+157,NE,Niger
+158,NF,Norfolk Island
+159,NG,Nigeria
+160,NI,Nicaragua
+161,NL,Netherlands
+162,NO,Norway
+163,NP,Nepal
+164,NR,Nauru
+165,NU,Niue
+166,NZ,New Zealand
+167,OM,Oman
+168,PA,Panama
+169,PE,Peru
+170,PF,French Polynesia
+171,PG,Papua New Guinea
+172,PH,Philippines
+173,PK,Pakistan
+174,PL,Poland
+175,PM,Saint Pierre And Miquelon
+176,PR,Puerto Rico
+178,PT,Portugal
+179,PW,Palau
+180,PY,Paraguay
+181,QA,Qatar
+183,RO,Romania
+184,RU,Russia
+185,RW,Rwanda
+186,SA,Saudi Arabia
+187,SB,Solomon Islands
+188,SC,Seychelles
+189,SD,Sudan
+190,SE,Sweden
+191,SG,Singapore
+192,SH,Saint Helena
+193,SI,Slovenia
+194,SJ,Svalbard And Jan Mayen
+195,SK,Slovak Republic
+196,SL,Sierra Leone
+197,SM,San Marino
+198,SN,Senegal
+199,SO,Somalia
+200,SR,Suriname
+201,ST,Sao Tome And Principe
+202,SV,El Salvador
+203,SY,Syria
+204,SZ,Swaziland
+205,TC,Turks And Caicos Islands
+206,TD,Chad
+207,TF,French Southern Territories
+208,TG,Togo
+209,TH,Thailand
+210,TJ,Tajikistan
+211,TK,Tokelau
+212,TM,Turkmenistan
+213,TN,Tunisia
+214,TO,Tonga
+215,TR,Turkey
+216,TT,Trinidad And Tobago
+217,TV,Tuvalu
+218,TW,Taiwan
+219,TZ,Tanzania
+220,UA,Ukraine
+221,UG,Uganda
+222,UM,United States Minor Outlying Islands
+223,US,United States
+224,UY,Uruguay
+225,UZ,Uzbekistan
+226,VA,Vatican City (Holy See)
+227,VC,Saint Vincent And The Grenadines
+228,VE,Venezuela
+231,VN,Vietnam
+232,VU,Vanuatu
+236,YT,Mayotte
+238,ZA,South Africa
+239,GB,United Kingdom

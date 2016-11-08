@@ -1,0 +1,119 @@
+wb.add_worksheet(name: t('views.campaign_reports.workbook.by_location.title')) do |sheet|
+
+  sheet.column_widths nil, nil, nil, nil, 10
+
+  r = [
+      campaign.name, '', '', '', '', '', '',
+      t('views.campaign_reports.workbook.fields.start_date'),
+      t('views.campaign_reports.workbook.fields.end_date'),
+      campaign.campaign_type.name,
+      t('views.campaign_reports.workbook.fields.total_budget')
+  ]
+  sheet.add_row r, style: [
+                     @title, @title, @title, @title, @title, @title,
+                     nil,
+                     @title_with_border, @title_with_border, @title_with_border, @title_with_border
+                 ]
+  sheet.merge_cells 'A1:F1' # Campaign Title
+
+  r = [
+      t('views.campaign_details.fields.number'),
+      t('views.campaign_details.fields.location'),
+      t('views.campaign_details.fields.views'),
+      t('views.campaign_details.fields.clicks'),
+      t('views.campaign_details.fields.ctr'),
+      t('views.campaign_details.fields.spend'),
+      '',
+      campaign.start_time.strftime(Date::DATE_FORMATS[:iso]),
+      campaign.end_time.strftime(Date::DATE_FORMATS[:iso]),
+      get_unit_price(campaign, :global),
+      get_budget(campaign, :global)
+  ]
+  s = [ @head, @head, @head, @head, @head, @head, nil, @border, @border, @border_money, @border_money]
+  sheet.add_row r, style: s
+
+  cell = Reports::Helpers::AgencyFormula.new 3, views: 'C', clicks: 'D', spend: 'F'
+
+  cell.chart_from = cell.row
+
+  data.each do |d|
+    sheet.add_row [
+                      cell.row - 2,
+                      d.location_name,
+                      d.views,
+                      d.clicks,
+                      cell.ctr,
+                      cell.spend(campaign.campaign_type, 'J2')
+                  ], style: [ @center, nil, @number, @number, @percent, @money]
+
+    cell.current_row_to_sum_list
+    cell.next
+  end
+
+  cell.chart_to = cell.row
+
+  sheet.add_row [
+                    '',
+                    t('views.campaign_details.fields.grand_total'),
+                    cell.sum_for_grand(:views),
+                    cell.sum_for_grand(:clicks),
+                    cell.ctr,
+                    cell.sum_for_grand(:spend)
+                ], style: [ @head, @head, @head_number, @head_number, @head_percent, @head_money]
+
+  cell.next
+
+  r = [
+      '',
+      t('views.campaign_reports.workbook.fields.target'),
+      campaign.CPM? ? campaign.target : '',
+      campaign.CPC? ? campaign.target : '',
+      '',
+      get_budget(campaign, :global),
+      '',
+      t('views.campaign_details.fields.delivery_realized'),
+      t('views.campaign_details.fields.delivery_expected'),
+      t('views.campaign_details.fields.campaign_health'),
+      t('views.campaign_details.fields.daily_pacing')
+  ]
+  s = [ @title, @title, @number, @number, nil, @money, nil, @title_with_border, @title_with_border, @title_with_border, @title_with_border]
+  sheet.add_row r, style: s
+
+  cell.next
+
+  r = [
+      '',
+      t('views.campaign_reports.workbook.fields.remaining'),
+      campaign.CPM? ? cell.minus_target(:views) : '',
+      campaign.CPC? ? cell.minus_target(:clicks) : '',
+      '',
+      cell.minus_target(:spend),
+      '',
+      number_to_percentage(campaign.delivery_realized_percent, precision: 2),
+      number_to_percentage(campaign.delivery_expected_percent, precision: 2),
+      number_to_percentage(campaign.health_percent, precision: 2),
+      number_with_delimiter(campaign.daily_pacing.round(3))
+  ]
+  s = [ @head, @head, @head_number, @head_number, @head, @head_money, nil, @border, @border, @border, @border]
+  sheet.add_row r, style: s
+
+  # Add hidden rows for create chart
+  cell.next
+
+  # Create chart
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Views', :start_at => "A#{cell.row}", :end_at => "H#{cell.row + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["C#{cell.chart_from}:C#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Clicks', :start_at => "H#{cell.row}", :end_at => "L#{cell.row + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["D#{cell.chart_from}:D#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+end

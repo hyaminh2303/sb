@@ -1,0 +1,54 @@
+.row
+  .col-xs-12.col-sm-7.col-sm-offset-2{ng: {show: 'userErrorMessages.length > 0'}}
+    .alert.alert-danger
+      %ul
+        %li{ng: {repeat: 'message in userErrorMessages'}}
+          %strong
+            {{message}}
+  .col-xs-12.col-sm-12
+    %hr{ng: {show: 'userErrorMessages.length > 0'}}
+%center
+  %form#new-user-box.show-user-box.visible.widget-box.no-border.form-horizontal{name: 'userForm'}
+    .widget-body
+      .widget-main
+        .row
+          %h4.header.green.lighter.bigger
+            %i.ace-icon.fa.fa-users.blue
+            New User
+        .row
+          .form-group
+            %label.col-sm-3.control-label.no-padding-right Email
+            .col-sm-9
+              %span.block.input-icon.input-icon-right
+                %input.form-control{type: 'email', ng: { model: 'user.email', required: 'true'}}
+                %i.fa.fa-envelope.ace-icon
+          .form-group
+            %label.col-sm-3.control-label.no-padding-right Name
+            .col-sm-9
+              %span.block.input-icon.input-icon-right
+                %input.form-control{type: 'text', ng: { model: 'user.name', required: 'true'}}
+                %i.fa.fa-user.ace-icon
+          .form-group
+            %label.col-sm-3.control-label.no-padding-right Company
+            .col-sm-9
+              %span.block.input-icon.input-icon-right
+                %input.form-control{type: 'text', ng: { model: 'user.company', required: 'true'}}
+                %i.fa.fa-building.ace-icon
+          .form-group{ng: { if: '!isEdit'}}
+            %label.col-sm-3.control-label.no-padding-right Password
+            .col-sm-9
+              %span.block.input-icon.input-icon-right
+                %input.form-control{type: 'password', ng: { model: 'user.password', required: '!isEdit'}}
+                %i.fa.fa-password.ace-icon
+          .form-group
+            %label.col-sm-3.control-label.no-padding-right Role
+            .col-sm-9
+              %ui-select.dropdown-roles{ng: { model: 'user.role', disabled: 'isEdit' }}
+                %ui-select-match{placeholder: t('role')}
+                  {{$select.selected.name}}
+                %ui-select-choices{:repeat => 'c.id as c in roles | filter: $select.search'}
+                  {{c.name}}
+          .space-24
+          .clearfix
+            %button{type: 'button', class: 'width-30 pull-left btn btn-sm', id: 'btn-cancel', ng: { click: 'newUserCtrl.cancel()'}} Cancel
+            %button{type: 'button', class: 'width-65 pull-right btn btn-sm btn-success', id: 'btn-create', ng: {click: 'isEdit ? newUserCtrl.editUser() : newUserCtrl.createUser()', disabled: 'userForm.$invalid'}} {{buttonText}}

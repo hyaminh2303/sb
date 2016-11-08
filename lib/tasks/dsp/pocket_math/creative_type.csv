@@ -1,0 +1,15 @@
+id,name
+1,Audio Ad (Auto Play)
+2,Audio Ad (User Initiated)
+3,Expandable (Automatic)
+4,Expandable (User Initiated Click)
+5,Expandable (User Initiated Rollover)
+6,In Banner Video Ad (Auto Play)
+7,In Banner Video Ad (User Initiated)
+8,"Pop (e.g., Over, Under, or upon Exit)"
+9,Provocative or Suggestive Imagery
+10,"Shaky, Flashing, Flickering, Extreme Animation, Smileys"
+11,Surveys
+12,Text Only
+13,"User Interactive (e.g., Embedded Games)"
+14,Windows Dialog or Alert Style

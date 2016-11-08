@@ -1,0 +1,62 @@
+wb.add_worksheet(name: t('views.campaign_reports.workbook.by_creative.title')) do |sheet|
+
+  sheet.column_widths nil, nil, nil, nil, 10
+
+  r = [
+      campaign.name, '', '', '', '',
+      t('views.campaign_reports.workbook.fields.start_date'),
+      t('views.campaign_reports.workbook.fields.end_date'),
+      campaign.pricing_model,
+      t('views.campaign_reports.workbook.fields.media_budget')
+  ]
+  sheet.add_row r, style: [
+                     @title, @title, @title, @title,
+                     nil,
+                     @title_with_border, @title_with_border, @title_with_border, @title_with_border
+                 ]
+  sheet.merge_cells 'A1:D1' # Campaign Title
+  #sheet.merge_cells 'I1:J1' # Campaign CPM
+  #sheet.merge_cells 'K1:L1' # Campaign total budget
+
+  r = [
+      t('views.campaign_details.fields.banner_size'),
+      t('views.campaign_details.fields.impressions'),
+      t('views.campaign_details.fields.clicks'),
+      t('views.campaign_details.fields.ctr'),
+      '',
+      campaign.start_time.strftime(Date::DATE_FORMATS[:iso]),
+      campaign.end_time.strftime(Date::DATE_FORMATS[:iso]),
+      get_unit_price(campaign, :local).format,
+      get_budget(campaign, :local).format
+  ]
+  s = [ @head, @head, @head, @head, nil, @border, @border, @border, @border]
+  sheet.add_row r, style: s
+
+  cell = Reports::Helpers::AdminFormula.new 3, impressions: 'B', clicks: 'C', spend: 'E'
+
+  cell.chart_from = cell.row
+
+  data.each do |d|
+    sheet.add_row [
+                      d.creative_name,
+                      d.impressions,
+                      d.clicks,
+                      cell.ctr
+                  ], style: [nil, @number, @number, @percent]
+
+    cell.current_row_to_sum_list
+    cell.next
+  end
+
+  cell.chart_to = cell.row
+
+  sheet.add_row [
+                    t('views.campaign_details.fields.grand_total'),
+                    cell.sum_for_grand(:impressions),
+                    cell.sum_for_grand(:clicks),
+                    cell.ctr
+                ], style: [ @head, @head_number, @head_number, @head_percent]
+
+  cell.next
+
+end

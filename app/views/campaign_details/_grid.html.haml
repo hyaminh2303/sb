@@ -1,0 +1,21 @@
+%table.table.table-bordered{ id: 'campaign-tracking-table'}
+  %thead
+    %tr
+      %th= t('views.campaign_details.fields.date')
+      %th= t('views.campaign_details.fields.views')
+      %th= t('views.campaign_details.fields.clicks')
+      %th= t('views.campaign_details.fields.ctr')
+      - if current_user.has_role? :admin
+        %th= t('views.campaign_details.fields.ecpm')
+        %th= t('views.campaign_details.fields.ecpc')
+      %th= t('views.campaign_details.fields.spend')
+  %tfoot
+    %tr
+      %th Grand Total
+      %th= number_with_delimiter(total.views)
+      %th= number_with_delimiter(total.clicks)
+      %th= total.ctr_formatted
+      - if current_user.has_role? :admin
+        %th= total.ecpm_formatted
+        %th= total.ecpc_formatted
+      %th= total.spend_formatted

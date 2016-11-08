@@ -1,0 +1,43 @@
+.row
+  .col-lg-4.col-sm-6.col-xs-12
+    .widget-box
+      .widget-header
+        %h5.widget-title Settings
+      .widget-body
+        .widget-main
+          = simple_form_for :settings do |f|
+            = f.input :schedule_frequency, label: 'Schedule Frequency (minutes)', required: false, input_html: {:'ng-model' => 'jobsCtrl.schedule_frequency', type: 'number'}
+            = f.button :button, 'Save', type: 'button', class: 'btn-primary', :'ng-click' => 'jobsCtrl.onSave()'
+
+.hr.hr-16
+
+%div.force-run
+  = simple_form_for :jobs do |f|
+    = f.button :button, fa_icon('play', text: 'Force Run Daily Worker'), type: 'button', class: 'btn-primary', :'ng-click' => 'jobsCtrl.runDailyTrackingWorker()'
+    = f.button :button, fa_icon('shield', text: 'Force Update AdExchange'), type: 'button', class: 'btn-primary', :'ng-click' => 'jobsCtrl.updateExchange()'
+
+
+%small{ng: {bind: 'jobsCtrl.lastRun'}}
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Process
+      %th TID
+      %th JID
+      %th Queue
+      %th Job
+      %th Started
+  %tbody
+    %tr{ng: {repeat: 'worker in jobsCtrl.workers'}}
+      %td
+        {{worker.process_id}}
+      %td
+        {{worker.thread_id}}
+      %td
+        {{worker.work.payload.jid}}
+      %td
+        {{worker.work.payload.queue}}
+      %td
+        {{worker.work.payload.class}}
+      %td
+        {{worker.time_ago}}

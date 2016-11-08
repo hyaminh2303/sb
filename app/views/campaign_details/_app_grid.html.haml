@@ -1,0 +1,17 @@
+%table.table.table-bordered{ id: 'campaign-app-table'}
+  %thead
+    %tr
+      %th= t('views.campaign_details.fields.number')
+      %th= t('views.campaign_details.fields.application')
+      %th= t('views.campaign_details.fields.views')
+      %th= t('views.campaign_details.fields.clicks')
+      %th= t('views.campaign_details.fields.ctr')
+
+      %th= t('views.campaign_details.fields.spend')
+  %tfoot
+    %tr
+      %th{ colspan: '2'} Grand Total
+      %th= number_with_delimiter(total.views)
+      %th= number_with_delimiter(total.clicks)
+      %th= total.ctr_formatted
+      %th= total.spend_formatted

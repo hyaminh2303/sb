@@ -1,0 +1,26 @@
+en:
+  models:
+    campaign_summary:
+      name: "Campaign Summary"
+      fields:
+        platform: 'Platform'
+        platform_total: 'Platform %{total}'
+        duration: 'Duration'
+        country_code: 'Territory'
+        agency: 'Sales Agency'
+        campaign: 'Campaign'
+        type: 'Type'
+        budget: 'Budget(USD)'
+        target: 'Target'
+        cpm: 'CPM'
+        views: 'Actual Imp'
+        imp: 'Imp.'
+        clicks: 'Actual Clicks'
+        delivery: 'Actual Delivery'
+        ctr: 'CTR'
+        spending: 'Spending'
+        spend: 'Spend'
+        spend_vs_budget: 'Spend vs Budget'
+        ecpm: 'eCPM'
+        ecpc: 'eCPC'
+      total: 'Grand Total'

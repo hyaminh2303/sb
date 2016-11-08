@@ -1,0 +1,19 @@
+%h3 Bidstalk Action Logs
+
+%table.table
+  %thead
+    %tr
+      %td Action
+      %td Campaign
+      %td Banner
+      %td Last Sync
+      %td Message
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.type.gsub('BidstalkTask::', '')
+        %td= task.campaign_name
+        %td= task.banner_name rescue ''
+        %td= local_time(task.updated_at,  '%B %e, %Y %l:%M%P')
+        %td= task.message
+

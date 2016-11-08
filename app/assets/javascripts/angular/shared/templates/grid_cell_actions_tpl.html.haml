@@ -1,0 +1,19 @@
+.ngCellText{"ng-class" => "col.colIndex()"}
+  .btn-group.pull-right{ng: {if: "row.entity['id'] > 0"}}
+    %button.btn.btn-default.btn-white.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown"}
+      %span.ace-icon.fa.fa-cog
+    %ul.dropdown-menu
+      %li
+        %a{ng: {href: '/campaigns/{{row.entity.id}}/clone/'}} Clone
+      %li
+        %a{ng: {href: '/campaigns/{{row.entity.id}}/edit/'}} Edit
+      %li
+        %a{ng: {if: "row.entity.status != 'terminated' && row.entity.status != 'completed'", click: 'grid.appScope.gridCtr.terminate(row.entity)'}} Terminate
+      %li{ng: {if: "row.entity['status'] == 'paused' || row.entity['status'] == 'live'"}}
+        %a{:href => "", :ng => {click: "grid.appScope.gridCtr.getAction(row.entity)", bind: "grid.appScope.gridCtr.getLabel(row.entity)"}}
+      %li
+        %a{ng: {hide: 'grid.appScope.gridCtr.checkAdmin()', click: 'grid.appScope.gridCtr.deleteCampaign(row.entity)'}} Delete
+      %li
+        %a{ng: {hide: 'grid.appScope.gridCtr.checkAdmin()', click: 'grid.appScope.gridCtr.repareData(row.entity)'}} Update Data from MongoDB
+      %li
+        %a{ng: {hide: 'grid.appScope.gridCtr.checkAdmin()', href: '/campaigns/{{row.entity.id}}/activities'}} History

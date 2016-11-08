@@ -1,0 +1,174 @@
+en:
+  campaigns:
+    new:
+      step1: 'Campaign Detail'
+      step2: 'Creative'
+      step3: 'Locations'
+      step4: 'Targeting'
+      campaign_name: 'Campaign Name'
+      campaign_type: 'Creative Type'
+      ad_domain: 'Ad Domain'
+      country: 'Country'
+      country_placeholder: 'Select or search a country in the list...'
+      pricing_model: 'Pricing Model'
+      pricing_model_placeholder: 'Select or search a pricing in the list...'
+      category: 'Category'
+      category_placeholder: 'Select or search a category in the list...'
+      price: 'Price'
+      timezone: 'Timezone'
+      timezone_placeholder: 'Select or search a timezone in the list...'
+      start_time: 'Start Date'
+      end_time: 'End Date'
+      wizard_actions_prev: 'Prev'
+      wizard_actions_next: 'Next'
+      wizard_actions_cancel: 'Cancel'
+      wizard_actions_launch: 'Launch Campaign'
+      wizard_actions_update: 'Update Campaign'
+      location_id: 'Id'
+      location_name: 'Name'
+      location_lat: 'Lat'
+      location_lng: 'Lng'
+      location_radius: 'Radius'
+      location_add: 'Add'
+      location_remove: 'Remove'
+      devices: 'Devices'
+      city: 'City'
+      devices_placeholder: 'Leave it blank to target all'
+      age_range: 'Age Range'
+      age_range_placeholder: 'Leave it blank to target all'
+      gender: 'Gender'
+      gender_placeholder: 'Leave it blank to target all'
+      campaigns_placeholder: 'Choose at least one campaign'
+      interests: 'Interests'
+      interests_placeholder: 'Leave it blank to target all'
+      categories: 'Categories'
+      categories_placeholder: 'Leave it blank to target all'
+      cities_placeholder: 'Choose at least one city'
+      operating_system_placeholder: 'Leave it blank to target all'
+      target_cpm: 'Target Views'
+      target_cpc: 'Target Clicks'
+      search: 'Search'
+      budget: 'Budget'
+      confirmation:
+        cancel: 'By closing the campaign editor, any unsaved changes will be lost.<br/> Are you sure you want to continue?'
+        already_edit: 'You are already editing a campaign. Would you like to open a new edit window and lose all unsaved progress for the existing campaign?'
+      error:
+        field:
+          name: 'Campaign Name'
+          adDomain: 'Ad Domain'
+          bannerType: 'Banner Type'
+          banners: 'Banners'
+          budget: 'Campaign Budget'
+          base: ''
+          cities: 'Cities'
+      instructions:
+        step2:
+          upload: 'Click the box and upload creative, please make sure the landing URL is correct for each creative.'
+          creative_size: 'Accepted creative size: 320x50, 300x50, 300x250, 728x90. The file size should < 60 KB.'
+          filename_extension: 'Accepted banner formats: JPG, PNG and GIF.'
+        step3: 'Click on the map to drop the pin and adjust the radius in the location list.'
+        max_location_selected: 'Maximum can be selected is 10.'
+        link_csv_template: 'https://s3-ap-southeast-1.amazonaws.com/self-booking-production/uploads/location_csv_template/template_file.csv'
+        download_csv_template: 'Click here to download CSV template file'
+      export: 'Export to Csv'
+      import: 'Import from Csv'
+
+    update:
+      error:
+        messages:
+          update_fail: 'Sorry, the update has been failed, a notification email has been sent to Administrator to investigate it'
+          budget: 'No sufficient fund in your acount, so you can not increase campaign budget!'
+          location: 'Sorry, you should select a location within  the selected country'
+      success:
+        messages:
+          deleted: 'This campaign has been deleted successfully!'
+          terminated: 'This campaign has been terminated successfully and it will be expired from tomorrow.!'
+          updating: 'The background job has been sent to update data. It will be finished within 2 minutes.'
+
+    title:
+      delete: "Delete this campaign?"
+      terminate: "Terminate this campaign?"
+
+    notifier:
+      email:
+        subject:
+          success: 'The campaign has been created successfully'
+          error: 'There was an error occurred while creating new campaign'
+          pause: 'Pause Campaign'
+          error_updating: 'There was an error occurred while updating campaign'
+          edit_success: 'Update Campaign'
+          create_success: 'New Campaign'
+          terminated: 'Terminate Campaign'
+    report:
+      export_report_as_agency: 'Export Report As Agency'
+      export_report: 'Export Report'
+      export_device_id: 'Export Devices ID'
+    not_available: "N/A"
+
+  views:
+    campaign_details:
+      show:
+        title: 'Individual Campaign'
+
+      group_stats:
+        title: 'Campaign Group Statistics'
+
+      group_details:
+        title: 'Campaign Group Details'
+
+      actions:
+        daily_report: 'Daily Report'
+        location_report: 'Location Report'
+        export_report: 'Export Report'
+        export_report_as_agency: 'Export Agency Report'
+        click_here: 'Click here'
+
+      exchange_rate:
+        title: 'Exchange Rate'
+        message: 'Exchange Rate: 1 %{currency} = %{rate} USD'
+
+      fields:
+        number: 'No.'
+        location: 'Location'
+        os: 'OS'
+        date: 'Date'
+        group_name: 'Group Name'
+        views: 'Views'
+        clicks: 'Clicks'
+        actual_spend: 'Actual Spend'
+        spend: 'Spend'
+        ctr: 'CTR'
+        ecpm: 'eCPM'
+        ecpc: 'eCPC'
+        platform: 'Platform'
+        grand_total: 'Grand Total'
+        delivery_realized: 'Delivery Realized'
+        delivery_expected: 'Delivery Expected'
+        campaign_health: 'Campaign Health'
+        daily_pacing: 'Daily Pacing of Impr./Click'
+        exchange_url: 'Exchange URL'
+        category: 'Category'
+        country: 'Country'
+        end_date: 'End Date'
+        start_date: 'Start Date'
+        unit_price: 'Unit Price'
+        target: 'Target'
+        type: 'Type'
+        total_budget: 'Total Budget'
+        media_budget: 'Media Budget'
+        development_fee: 'Creative Development Fee'
+        advertiser: 'Advertiser'
+        agency_name: 'Agency Name'
+        sales_agency_commission: 'Sales Agency Commission'
+        banner_size: 'Banner Size'
+        impressions: 'Impressions'
+        creative: 'Creatives'
+        dates: 'Dates'
+        ad_group: 'Ad Group'
+        number_of_device_ids: '# of device IDs'
+        device_ids_vs_views: 'Device IDs vs. Views'
+        frequency_cap: 'Frequency cap'
+        location_break_down: 'Location Breakdown'
+        yes: 'Yes'
+        no: 'No'
+

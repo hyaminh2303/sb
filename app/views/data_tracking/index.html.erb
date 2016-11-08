@@ -1,0 +1,46 @@
+<h3>Data Tracking for Campaign: <%= @campaign.name %></h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 150px;" class="center">Date</th>
+      <th colspan="2" class="center">Self Booking</th>
+      <th colspan="2" class="center">Bidstalk</th>
+      <th colspan="2" class="center">Final</th>
+    </tr>
+    <tr class="center">
+      <th></th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+      <th class="center">Views</th>
+      <th class="center">Clicks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @data.each do |data| %>
+    <tr class="center">
+      <td> <%= local_time(data.date, '%B %e, %Y') %>
+      </td>
+      <td><%= number_with_delimiter data.daily_tracking_views.to_i %></td>
+      <td><%= number_with_delimiter data.daily_tracking_clicks.to_i %></td>
+      <td><%= number_with_delimiter data.impressions %></td>
+      <td><%= number_with_delimiter data.clicks %></td>
+      <td><%= number_with_delimiter (@daily_trackings[data.date] || []).reduce(0){|sum, obj| sum + obj.views} %></td>
+      <td><%= number_with_delimiter (@daily_trackings[data.date] || []).reduce(0){|sum, obj| sum + obj.clicks} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tbody>
+    <tr style="font-weight: bold" class="center">
+      <td><strong>Total</strong>
+      </td>
+      <td><%= number_with_delimiter @data.sum(:daily_tracking_views).to_i %></td>
+      <td><%= number_with_delimiter @data.sum(:daily_tracking_clicks).to_i %></td>
+      <td><%= number_with_delimiter @data.sum(:impressions).to_i %></td>
+      <td><%= number_with_delimiter @data.sum(:clicks).to_i %></td>
+      <td><%= number_with_delimiter @actual_views %></td>
+      <td><%= number_with_delimiter @actual_clicks %></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,4 @@
+.ui-select-container.ui-select-bootstrap.dropdown{"ng-class" => "{open: $select.open}"}
+  .ui-select-match
+  %input.form-control.ui-select-search{"aria-activedescendant" => "ui-select-choices-row-{{ $select.generatedId }}-{{ $select.activeIndex }}", "aria-expanded" => "true", "aria-label" => "{{ $select.baseTitle }}", "aria-owns" => "ui-select-choices-{{ $select.generatedId }}", :autocomplete => "off", "ng-model" => "$select.search", "ng-show" => "$select.searchEnabled && $select.open", :placeholder => "{{$select.placeholder}}", :tabindex => "-1", :type => "text"}
+    .ui-select-choices

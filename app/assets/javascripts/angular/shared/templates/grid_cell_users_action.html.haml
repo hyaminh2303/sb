@@ -1,0 +1,13 @@
+.ngCellText
+  .btn-group.pull-right{ng: {if: "row.entity['id'] > 0"}}
+    %button.btn.btn-default.btn-white.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown"}
+      %span.ace-icon.fa.fa-cog
+    %ul.dropdown-menu
+      %li
+        %a{:href => "", :ng => {click: "row.entity['approved'] ? grid.appScope.usersCtr.unApprove(row.entity['id']) : grid.appScope.usersCtr.approve(row.entity['id'])", bind: "row.entity['approved'] ? 'Disapprove' : 'Approve'"}}
+      %li{ng: {if: "row.entity['approved']"}}
+        %a{:href => "", :ng => { click: "grid.appScope.usersCtr.openAddBudgetModal('sm', row.entity['email'], row.entity['budget'])"} } Add budget
+      %li
+        %a{ng: {href: "/users/{{row.entity['id']}}/edit" }} Edit
+      %li
+        %a{ng: {href: "", click: "grid.appScope.usersCtr.resetAgencyPassword(row.entity['id'], row.entity['email'])"}} Reset Password

@@ -1,0 +1,14 @@
+%p
+  = "Hi #{@user.name},"
+%p
+  You have successfully signed up for GeoPoint. 
+%p
+  Please click
+  %span= link_to 'Here', confirmation_url(@resource, confirmation_token: @token)
+  to activate your account. 
+%p
+  For platform support, please email to 
+  %span= link_to 'ops@yoose.com', "mailto:ops@yoose.com"
+%p
+  Best Regards,
+  YOOSE

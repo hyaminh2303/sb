@@ -1,0 +1,2 @@
+module CampaignDetailsControllerHelper
+end

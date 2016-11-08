@@ -1,0 +1,118 @@
+wb.add_worksheet(name: t('views.campaign_reports.workbook.by_group.title')) do |sheet|
+
+  sheet.column_widths nil, nil, nil, nil, nil, 5
+
+  r = [ campaign.name]
+  r += agency_row_campaign_info(1, campaign)
+  sheet.add_row r, style: agency_style_campaign_info(1)
+  sheet.merge_cells 'A1:E1' # Campaign Title
+
+  r = [
+      t('views.campaign_details.fields.group_name'),
+      t('views.campaign_details.fields.views'),
+      t('views.campaign_details.fields.clicks'),
+      t('views.campaign_details.fields.ctr'),
+      t('views.campaign_details.fields.spend'),
+  ]
+  r += agency_row_campaign_info(2, campaign)
+  s = [ @head, @head, @head, @head, @head]
+  s += agency_style_campaign_info(2)
+  sheet.add_row r, style: s
+
+  cell = Reports::Helpers::AgencyFormula.new 3
+
+  cell.chart_from = cell.row
+
+  data.each do |d|
+    sheet.add_row [
+                      d.group_name,
+                      cell.sum_for_sub_items(:views, d.data.count),
+                      cell.sum_for_sub_items(:clicks, d.data.count),
+                      cell.ctr,
+                      cell.sum_for_sub_items(:spend, d.data.count),
+                  ], style: [ nil, @number, @number, @percent, @money]
+
+    cell.current_row_to_sum_list
+
+    if d.data.any?
+      d.data.each do |sub|
+        cell.next
+        sheet.add_row [
+                          sub.date_formatted,
+                          sub.views,
+                          sub.clicks,
+                          cell.ctr,
+                          cell.spend(campaign.campaign_type),
+                      ], style: [ @sub, @sub_number, @sub_number, @sub_percent, @sub_money]
+      end
+    end
+
+    cell.next
+  end
+
+  cell.chart_to = cell.row
+
+  sheet.add_row [
+                    t('views.campaign_details.fields.grand_total'),
+                    cell.sum_for_grand_in_list(:views),
+                    cell.sum_for_grand_in_list(:clicks),
+                    cell.ctr,
+                    cell.sum_for_grand_in_list(:spend)
+                ], style: [ @head, @head_number, @head_number, @head_percent, @head_money]
+
+  cell.next
+
+  r = [
+      t('views.campaign_reports.workbook.fields.target'),
+      campaign.CPM? ? campaign.target : '',
+      campaign.CPC? ? campaign.target : '',
+      '',
+      campaign.budget_as_money
+  ]
+  r += agency_campaign_health_title
+  s = [ @title, @number, @number, nil, @money]
+  s += agency_campaign_health_style
+  sheet.add_row r, style: s
+
+  cell.next
+
+  r = [
+      t('views.campaign_reports.workbook.fields.remaining'),
+      campaign.CPM? ? cell.minus_target(:views) : '',
+      campaign.CPC? ? cell.minus_target(:clicks) : '',
+      '',
+      cell.minus_target(:spend)
+  ]
+  r += agency_campaign_health_content campaign
+  s = [ @head, @head_number, @head_number, @head_percent, @head_money]
+  s += agency_campaign_health_content_style
+  sheet.add_row r, style: s
+
+  # Add hidden rows for create chart
+  cell.next
+  chart_area_start = cell.row
+
+  cell.chart_from = cell.row
+  data.each do |d|
+    sheet.add_row [ d.group_name, d.views, d.clicks], style: @blank
+    cell.next
+  end
+  cell.chart_to = cell.row
+
+  # Create chart
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Views', :start_at => "A#{chart_area_start}", :end_at => "H#{chart_area_start + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["B#{cell.chart_from}:B#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+
+  sheet.add_chart(Axlsx::Bar3DChart, :title => 'Clicks', :start_at => "H#{chart_area_start}", :end_at => "M#{chart_area_start + 15}", :bar_dir => :col, :show_legend => false) do |chart|
+    chart.add_series :data => sheet["C#{cell.chart_from}:C#{cell.chart_to - 1}"],
+                     :labels => sheet["A#{cell.chart_from}:A#{cell.chart_to - 1}"],
+                     :colors => (cell.chart_from...cell.chart_to).map { "4F81BD"}
+    chart.valAxis.gridlines = true
+    chart.catAxis.gridlines = false
+  end
+end

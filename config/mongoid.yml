@@ -1,0 +1,50 @@
+development:
+  clients:
+    default:
+      database: sb_tracking
+      hosts:
+        - docker-host:27017
+  options:
+    include_root_in_json: false
+    include_type_for_serialization: false
+    preload_models: false
+    raise_not_found_error: false
+    scope_overwrite_exception: false
+    use_activesupport_time_zone: true
+    use_utc: false
+
+staging:
+  clients:
+    default:
+      database: sb_tracking
+      hosts:
+        - ip-10-150-30-125.ap-southeast-1.compute.internal:27017
+      options:
+        user: yoose
+        password: f8763o4zvlfszoq34ziv
+  options:
+    include_root_in_json: false
+    include_type_for_serialization: false
+    preload_models: true
+    raise_not_found_error: false
+    scope_overwrite_exception: false
+    use_activesupport_time_zone: true
+    use_utc: true
+
+production:
+  clients:
+    default:
+      database: sb_tracking
+      hosts:
+        - 10.174.14.206:27017
+      options:
+        user: yoose
+        password: f8763o4zvlfszoq34ziv
+  options:
+    include_root_in_json: false
+    include_type_for_serialization: false
+    preload_models: true
+    raise_not_found_error: false
+    scope_overwrite_exception: false
+    use_activesupport_time_zone: true
+    use_utc: true

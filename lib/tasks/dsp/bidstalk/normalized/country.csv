@@ -1,0 +1,227 @@
+id,country_code,name
+11,11,Afghanistan
+13,13,Albania
+14,14,Algeria
+15,15,American Samoa
+16,16,Andorra
+17,17,Angola
+18,18,Anguilla
+19,19,Antarctica
+20,20,Antigua and Barbuda
+21,21,Argentina
+22,22,Armenia
+23,23,Aruba
+24,24,Australia
+25,25,Austria
+26,26,Azerbaijan
+27,27,Bahamas
+28,28,Bahrain
+29,29,Bangladesh
+30,30,Barbados
+31,31,Belarus
+32,32,Belgium
+33,33,Belize
+34,34,Benin
+35,35,Bermuda
+36,36,Bhutan
+37,37,Bolivia
+39,39,Bosnia and Herzegovina
+40,40,Botswana
+41,41,Bouvet Island
+42,42,Brazil
+43,43,British Indian Ocean Territory
+44,44,Brunei
+45,45,Bulgaria
+46,46,Burkina Faso
+47,47,Burundi
+48,48,Cambodia
+49,49,Cameroon
+50,50,Canada
+51,51,Cape Verde
+52,52,Cayman Islands
+53,53,Central African Republic
+54,54,Chad
+55,55,Chile
+56,56,China
+57,57,Christmas Island
+58,58,Cocos (Keeling) Islands
+59,59,Colombia
+60,60,Comoros
+61,61,Congo
+62,62,Democratic Republic Of Congo (Zaire)
+63,63,Cook Islands
+64,64,Costa Rica
+65,65,Cote D'Ivorie (Ivory Coast)
+66,66,Croatia (Hrvatska)
+67,67,Cuba
+69,69,Cyprus
+70,70,Czech Republic
+71,71,Denmark
+72,72,Djibouti
+73,73,Dominica
+74,74,Dominican Republic
+75,75,Ecuador
+76,76,Egypt
+77,77,El Salvador
+78,78,Equatorial Guinea
+79,79,Eritrea
+80,80,Estonia
+81,81,Ethiopia
+82,82,Falkland Islands (Malvinas)
+83,83,Faroe Islands
+84,84,Fiji
+85,85,Finland
+86,86,France
+87,87,French Guinea
+88,88,French Polynesia
+89,89,French Southern Territories
+90,90,Gabon
+91,91,Gambia
+92,92,Georgia
+93,93,Germany
+94,94,Ghana
+95,95,Gibraltar
+96,96,Greece
+97,97,Greenland
+98,98,Grenada
+99,99,Guadeloupe
+100,100,Guam
+101,101,Guatemala
+103,103,Guinea
+104,104,Guinea-Bissau
+105,105,Guyana
+106,106,Haiti
+107,107,Heard And McDonald Islands
+108,108,Vatican City (Holy See)
+109,109,Honduras
+110,110,Hong Kong
+111,111,Hungary
+112,112,Iceland
+113,113,India
+114,114,Indonesia
+115,115,Iran
+116,116,Iraq
+117,117,Ireland
+119,119,Israel
+120,120,Italy
+121,121,Jamaica
+122,122,Japan
+124,124,Jordan
+125,125,Kazakhstan
+126,126,Kenya
+127,127,Kiribati
+128,128,North Korea
+129,129,South Korea
+130,130,Kuwait
+131,131,Kyrgyzstan
+132,132,Laos
+133,133,Latvia
+134,134,Lebanon
+135,135,Lesotho
+136,136,Liberia
+137,137,Libya
+138,138,Liechtenstein
+139,139,Lithuania
+140,140,Luxembourg
+141,141,Macao
+142,142,Macedonia
+143,143,Madagascar
+144,144,Malawi
+145,145,Malaysia
+146,146,Maldives
+147,147,Mali
+148,148,Malta
+149,149,Marshall Islands
+150,150,Martinique
+151,151,Mauritania
+152,152,Mauritius
+153,153,Mayotte
+154,154,Mexico
+155,155,Micronesia
+156,156,Moldova
+157,157,Monaco
+158,158,Mongolia
+160,160,Montserrat
+161,161,Morocco
+162,162,Mozambique
+163,163,Myanmar (Burma)
+164,164,Namibia
+165,165,Nauru
+166,166,Nepal
+167,167,Netherlands
+168,168,New Caledonia
+169,169,New Zealand
+170,170,Nicaragua
+171,171,Niger
+172,172,Nigeria
+173,173,Niue
+174,174,Norfolk Island
+175,175,Northern Mariana Islands
+176,176,Norway
+177,177,Oman
+178,178,Pakistan
+179,179,Palau
+181,181,Panama
+182,182,Papua New Guinea
+183,183,Paraguay
+184,184,Peru
+185,185,Philippines
+187,187,Poland
+188,188,Portugal
+189,189,Puerto Rico
+190,190,Qatar
+192,192,Romania
+193,193,Russia
+194,194,Rwanda
+196,196,Saint Helena
+197,197,Saint Kitts and Nevis
+198,198,Saint Lucia
+200,200,Saint Pierre and Miquelon
+201,201,Saint Vincent and the Grenadines
+202,202,American Samoa
+203,203,San Marino
+204,204,Sao Tome and Principe
+205,205,Saudi Arabia
+206,206,Senegal
+208,208,Seychelles
+209,209,Sierra Leone
+210,210,Singapore
+212,212,Slovak Republic
+213,213,Slovenia
+214,214,Solomon Islands
+215,215,Somalia
+216,216,South Africa
+217,217,South Georgia And South Sandwich Islands
+219,219,Spain
+220,220,Sri Lanka
+221,221,Sudan
+222,222,Suriname
+223,223,Svalbard and Jan Mayen
+224,224,Swaziland
+225,225,Sweden
+226,226,Switzerland
+227,227,Syria
+228,228,Taiwan
+229,229,Tajikistan
+230,230,Tanzania
+231,231,Thailand
+233,233,Togo
+234,234,Tokelau
+235,235,Tonga
+236,236,Trinidad and Tobago
+237,237,Tunisia
+238,238,Turkey
+239,239,Turkmenistan
+240,240,Turks and Caicos Islands
+241,241,Tuvalu
+242,242,Uganda
+243,243,Ukraine
+244,244,United Arab Emirates
+245,245,United Kingdom
+246,246,United States
+247,247,United States Minor Outlying Islands
+248,248,Uruguay
+249,249,Uzbekistan
+250,250,Vanuatu
+251,251,Venezuela
+252,252,Vietnam

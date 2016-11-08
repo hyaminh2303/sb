@@ -1,0 +1,23 @@
+en:
+  models:
+    agency:
+      fields:
+        name: 'Name'
+        country_code: 'Country'
+        agency: 'Agency'
+        email: "Email"
+      messages:
+        send_invitation:
+          confirmation: 'Are you sure you want to send an invitation email?'
+          not_enabled: 'This agency need to be enabled first.'
+          success: 'The invitation email has been sent to %{email}'
+        destroy:
+          being_used: 'This agency has been used. You can not destroy it.'
+        reset_password:
+          confirmation: 'Are you sure you want to reset Agency "%{email}" password?'
+          success: 'The agency password has been reset to %{password}'
+      actions:
+        send_invitation: 'Send an invitation email'
+        reset_password: 'Reset Agency password'
+        select_as_agency: 'Please select an Agency if you want to create it as a client'
+      name: "Agency"

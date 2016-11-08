@@ -1,0 +1,20 @@
+#forgot-box.forgot-box.visible.widget-box.no-border
+  .widget-body
+    .widget-main
+      %h4.header.red.lighter.bigger
+        %i.ace-icon.fa.fa-key
+        Forgot your password?
+      .space-6
+
+      %p
+        Enter your email and to receive instructions
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = render :partial => '/devise/shared/errors', locals: {model: resource}
+        .form-group
+          %span.block.input-icon.input-icon-right
+            = f.email_field :email, autofocus: true, :class => 'form-control', :placeholder => 'Email'
+            = fa_icon :envelope, class: 'ace-icon'
+        .clearfix
+          = f.submit 'Send Me!', :class => 'width-35 pull-right btn btn-sm btn-danger'
+    .toolbar.center
+      = link_to "Sign in", new_session_path(resource_name), class: 'back-to-login-link', data: {target: '#login-box'}

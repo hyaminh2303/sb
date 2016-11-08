@@ -1,0 +1,13 @@
+id,width,height,description,ad_type
+11,320,50,320x50 Small Banner,standard banner
+12,300,250,300x250 Square Banner,standard banner
+13,728,90,728x90 Tablet Landscape,standard banner
+14,120,600,120x600 Tablet Landscape,standard banner
+15,468,60,468x60 Tablet Landscape,standard banner
+16,320,480,320x480 Full Screen Mobile Interstitial Portrait,standard banner
+17,480,320,480x320 Full Screen Mobile Interstitial Landscape,standard banner
+18,768,1024,768x1024 Full Screen Tablet Interstitial Portrait,standard banner
+19,1024,768,1024x768 Full Screen Tablet Interstitial Landscape,standard banner
+20,216,36,216x36 Large Mobile Banner,standard banner
+21,120,20,120x20 Small Mobile Banner,standard banner
+22,168,28,168x28 Medium Mobile Banner,standard banner

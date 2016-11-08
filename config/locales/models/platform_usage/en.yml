@@ -1,0 +1,8 @@
+en:
+  models:
+    platform_usage:
+      name: "Platform Usage"
+      fields:
+        platform: 'Platform'
+        impressions: 'Impressions'
+        spend: 'Spend'

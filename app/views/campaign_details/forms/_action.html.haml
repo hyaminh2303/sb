@@ -1,0 +1,16 @@
+- if current_user.is_admin?
+  = link_to t('campaigns.report.export_report'), export_campaign_report_path(campaign),
+          :id => 'export_daily_report',
+          :class => "btn btn-primary",
+          :title => t('campaigns.report.export_report')
+
+= link_to t("campaigns.report.#{current_user.is_admin? ? 'export_report_as_agency' : 'export_report'}"), export_as_agency_campaign_report_path(campaign),
+      :id => 'export_daily_report_as_agency',
+      :class => "btn btn-primary",
+      :title => t('campaigns.report.export_report_as_agency')
+
+- if current_user.is_admin?
+  = link_to t('campaigns.report.export_device_id'), export_device_id_campaign_report_path(campaign),
+      :id => 'export_device_id',
+      :class => "btn btn-primary",
+      :title => t('campaigns.report.export_device_id')
